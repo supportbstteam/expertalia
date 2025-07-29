@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-// import { getToken } from 'next-auth/jwt'; // or read from cookies
+import { getToken } from 'next-auth/jwt'; // or read from cookies
 
 export async function middleware(request) {
-  const token = request.cookies.get('token')?.value;
+  const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
 
-  const protectedPaths = ['/dashboard', '/admin', '/about'];
+  const protectedPaths = ['/seller/dashboard', '/admin'];
 
   const isProtected = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path)

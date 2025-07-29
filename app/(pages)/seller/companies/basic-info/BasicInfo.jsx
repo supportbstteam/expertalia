@@ -1,32 +1,41 @@
 "use client";
 
 import { CheckCircle, Pencil } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function BasicInfo() {
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(true); // loading state
   const [companyData, setCompanyData] = useState({
-    name: "DealEase",
-    nif: "B91977918",
-    postalCode: "285001",
-    tags: [
-      {
-        category: "construction",
-        name: "building",
-      },
-      {
-        category: "construction",
-        name: "civil construction",
-      },
-    ],
+    name: "",
+    nif: "",
+    postalCode: "",
+    sectors: [],
   });
 
-  const availableTags = [
+  const availablesectors = [
     { category: "construction", name: "building" },
     { category: "construction", name: "civil construction" },
     { category: "tech", name: "AI" },
     { category: "tech", name: "Cloud" },
   ];
+
+  useEffect(() => {
+    const fetchCompanyData = async () => {
+      try {
+        const response = await fetch("/api/company/basic-info");
+        const data = await response.json();
+        if (data.company) {
+          setCompanyData(data.company);
+        }
+      } catch (err) {
+        console.error("Failed to fetch company data:", err);
+      } finally {
+        setLoading(false); // done loading
+      }
+    };
+    fetchCompanyData();
+  }, []);
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
@@ -43,11 +52,23 @@ export default function BasicInfo() {
   const handleSubmit = async () => {
     const response = await fetch("/api/company/basic-info", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(companyData),
     });
     const data = await response.json();
     console.log(data);
   };
+
+  // Show loading screen or return null while loading
+  if (loading || !companyData) {
+    return (
+      <section className="p-6 md:p-10 min-h-screen flex items-center justify-center">
+        <p className="text-gray-500">Loading company data...</p>
+      </section>
+    );
+  }
 
   return (
     <section className="p-6 md:p-10 bg-white min-h-screen">
@@ -170,64 +191,19 @@ export default function BasicInfo() {
           </div>
         </div>
 
-        {/* Tags */}
-        {/* <div className="flex flex-wrap gap-4">
-          {companyData.tags.map((tag, index) => (
-            <div
-              key={index}
-              className="bg-white border border-[#ececf2] rounded-xl px-5 py-3 flex items-center gap-2 text-sm text-[#0c1c3f]"
-            >
-              {isEditing ? (
-                <input
-                  type="text"
-                  name={`tags[${index}].category`}
-                  value={tag.category}
-                  onChange={handleChange}
-                  className="border border-[#ececf2] rounded-md p-2 w-24"
-                />
-              ) : (
-                <span className="text-[#666c89]">{tag.category}</span>
-              )}
-              {isEditing ? (
-                <input
-                  type="text"
-                  name={`tags[${index}].name`}
-                  value={tag.name}
-                  onChange={handleChange}
-                  className="border border-[#ececf2] rounded-md p-2 w-24"
-                />
-              ) : (
-                <span className="font-medium">{tag.name}</span>
-              )}
-            </div>
-          ))}
-          {isEditing && (
-            <button
-              onClick={() =>
-                setCompanyData((prevData) => ({
-                  ...prevData,
-                  tags: [...prevData.tags, { category: "", name: "" }],
-                }))
-              }
-              className="bg-blue-500 text-white rounded-full px-3 py-1 text-sm"
-            >
-              + Add Tag
-            </button>
-          )}
-        </div> */}
-        {/* Tags */}
+        {/* sectors */}
         <div className="flex flex-col gap-4 mt-4">
-          <label className="text-[#666c89] font-normal text-sm">Tags</label>
+          <label className="text-[#666c89] font-normal text-sm">sectors</label>
 
           {!isEditing ? (
             <div className="flex flex-wrap gap-4">
-              {companyData.tags.map((tag, index) => (
+              {companyData.sectors.map((sector, index) => (
                 <div
                   key={index}
                   className="bg-white border border-[#ececf2] rounded-xl px-5 py-3 flex items-center gap-2 text-sm text-[#0c1c3f]"
                 >
-                  <span className="text-[#666c89]">{tag.category}</span>
-                  <span className="font-medium">{tag.name}</span>
+                  <span className="text-[#666c89]">{sector.category}</span>
+                  <span className="font-medium">{sector.name}</span>
                 </div>
               ))}
             </div>
@@ -235,12 +211,13 @@ export default function BasicInfo() {
             <div className="relative inline-block w-64">
               <details className="bg-white border border-[#ececf2] rounded-md p-3 cursor-pointer">
                 <summary className="text-sm text-[#0c1c3f] font-medium">
-                  Select Tags
+                  Select sectors
                 </summary>
                 <div className="mt-2 max-h-40 overflow-y-auto flex flex-col gap-2">
-                  {availableTags.map((tag, idx) => {
-                    const isChecked = companyData.tags.some(
-                      (t) => t.category === tag.category && t.name === tag.name
+                  {availablesectors.map((sector, idx) => {
+                    const isChecked = companyData.sectors.some(
+                      (t) =>
+                        t.category === sector.category && t.name === sector.name
                     );
                     return (
                       <label key={idx} className="flex items-center gap-2">
@@ -249,26 +226,26 @@ export default function BasicInfo() {
                           checked={isChecked}
                           onChange={() => {
                             setCompanyData((prevData) => {
-                              const exists = prevData.tags.some(
+                              const exists = prevData.sectors.some(
                                 (t) =>
-                                  t.category === tag.category &&
-                                  t.name === tag.name
+                                  t.category === sector.category &&
+                                  t.name === sector.name
                               );
-                              const updatedTags = exists
-                                ? prevData.tags.filter(
+                              const updatedsectors = exists
+                                ? prevData.sectors.filter(
                                     (t) =>
                                       !(
-                                        t.category === tag.category &&
-                                        t.name === tag.name
+                                        t.category === sector.category &&
+                                        t.name === sector.name
                                       )
                                   )
-                                : [...prevData.tags, tag];
-                              return { ...prevData, tags: updatedTags };
+                                : [...prevData.sectors, sector];
+                              return { ...prevData, sectors: updatedsectors };
                             });
                           }}
                         />
                         <span className="text-sm text-[#0c1c3f]">
-                          {tag.category} - {tag.name}
+                          {sector.category} - {sector.name}
                         </span>
                       </label>
                     );
@@ -276,14 +253,14 @@ export default function BasicInfo() {
                 </div>
               </details>
 
-              {/* Selected Tags Preview */}
+              {/* Selected sectors Preview */}
               <div className="mt-3 flex flex-wrap gap-2">
-                {companyData.tags.map((tag, index) => (
+                {companyData.sectors.map((sector, index) => (
                   <span
                     key={index}
                     className="bg-[#eef0f6] px-3 py-1 rounded-full text-sm text-[#3f4fff] font-medium"
                   >
-                    {tag.name}
+                    {sector.name}
                   </span>
                 ))}
               </div>
