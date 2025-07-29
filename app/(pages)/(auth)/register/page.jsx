@@ -19,7 +19,7 @@ export default function RegisterPage({ searchParams }) {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Full Name
+                Full Name <span className="text-red-500">*</span>
               </label>
               <div className="mt-1">
                 <input
@@ -38,7 +38,7 @@ export default function RegisterPage({ searchParams }) {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email address
+                Email address <span className="text-red-500">*</span>
               </label>
               <div className="mt-1">
                 <input
@@ -58,7 +58,7 @@ export default function RegisterPage({ searchParams }) {
                 htmlFor="userType"
                 className="block text-sm font-medium text-gray-700"
               >
-                Account Type
+                Account Type <span className="text-red-500">*</span>
               </label>
               <div className="mt-1">
                 <select
@@ -79,7 +79,7 @@ export default function RegisterPage({ searchParams }) {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Password
+                Password <span className="text-red-500">*</span>
               </label>
               <div className="mt-1">
                 <input
@@ -98,7 +98,7 @@ export default function RegisterPage({ searchParams }) {
                 htmlFor="confirmPassword"
                 className="block text-sm font-medium text-gray-700"
               >
-                Confirm Password
+                Confirm Password <span className="text-red-500">*</span>
               </label>
               <div className="mt-1">
                 <input
