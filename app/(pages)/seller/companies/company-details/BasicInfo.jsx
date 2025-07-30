@@ -2,8 +2,12 @@
 
 import { CheckCircle, Pencil } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { setCompanyId } from '@/redux/companySlice';
 
 export default function BasicInfo() {
+
+  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true); // loading state
   const [companyData, setCompanyData] = useState({
@@ -26,6 +30,8 @@ export default function BasicInfo() {
         const response = await fetch("/api/company/basic-info");
         const data = await response.json();
         if (data.company) {
+          dispatch(setCompanyId(data.company._id));
+          // localStorage.setItem("companyId", data.company._id);
           setCompanyData(data.company);
         }
       } catch (err) {
@@ -71,7 +77,7 @@ export default function BasicInfo() {
   }
 
   return (
-    <section className="p-6 md:p-10 bg-white min-h-screen">
+    <section className="p-6 rounded-xl shadow-sm bg-white mb-6">
       {/* Info Banner */}
       <div className="bg-yellow-100 border border-yellow-200 rounded-md p-4 text-sm text-yellow-800 flex justify-between items-center mb-6">
         <span>
