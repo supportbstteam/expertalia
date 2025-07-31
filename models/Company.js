@@ -59,6 +59,56 @@ const CompanySchema = new mongoose.Schema({
         of: String,
         default: {}
     },
+    currentAssets: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    treasury: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    nonCurrentAsset: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    totalActive: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    currentLiabilities: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    shortTermDebts: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    nonCurrentLiabilities: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    longTermDebts: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    netWorth: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    totalLiabilitiesAndNetWorth: {
+        type: Map,
+        of: String,
+        default: {}
+    },
     createdAt: {
         type: Date,
         default: Date.now

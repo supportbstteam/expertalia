@@ -9,7 +9,7 @@ export default function CompanyDetailsCard() {
     <>
       <BasicInfo />
       <ProfitAndLoss />
-      {/* <BalanceSheet /> */}
+      <BalanceSheet />
     </>
   );
 }

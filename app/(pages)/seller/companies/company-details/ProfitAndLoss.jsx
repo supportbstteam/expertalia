@@ -140,7 +140,7 @@ export default function ProfitAndLoss() {
   };
 
   return (
-    <section className="bg-white p-6 rounded-xl shadow-sm">
+    <section className="bg-white p-6 rounded-xl shadow-sm mb-6">
       {/* Header */}
       <div className="flex justify-between items-start mb-4">
         <div>
@@ -180,19 +180,20 @@ export default function ProfitAndLoss() {
               Billing (sales) {years[2]}
             </p>
             <p className="text-2xl font-semibold text-[#3b3f51]">
-              {formData.sales[years[2]]} €
+              {formData?.sales?.[years[2]]} €
             </p>
           </div>
           <div className="bg-[#f9fafc] p-6 rounded-xl relative">
             <p className="text-sm text-[#666c89] mb-1">EBITDA {years[2]}</p>
             <p className="text-2xl font-semibold text-[#3b3f51]">
-              {formData.ebitda[years[2]]} €
+              {formData?.ebitda?.[years[2]]} €
             </p>
           </div>
         </div>
       ) : (
         <>
           <div className="bg-[#f0f4ff] p-3 rounded-md text-sm text-[#2a3281] mb-4">
+            <Info size={18} className="inline-block mr-3 text-[#2a3281]" />
             <span className="font-medium">In your case, </span>
             <span>
               we <strong>have not found this information</strong> and you will
@@ -202,12 +203,14 @@ export default function ProfitAndLoss() {
 
           <form onSubmit={handleSave}>
             <div className="overflow-auto">
-              <table className="w-full text-left text-sm text-[#3b3f51] border-separate border-spacing-y-4">
+              <table className="w-full text-sm text-[#3b3f51] border-separate border-spacing-y-4">
                 <thead>
-                  <tr>
-                    <th className="pr-4">Profit and loss(€)</th>
+                  <tr className="bg-gray-100 border-b text-left text-gray-600 font-medium">
+                    <th className="p-3">Profit and loss(€)</th>
                     {years.map((year) => (
-                      <th key={year}>{year}</th>
+                      <th key={year} className="p-2 text-right">
+                        {year}
+                      </th>
                     ))}
                   </tr>
                 </thead>
@@ -230,11 +233,18 @@ export default function ProfitAndLoss() {
                       {years.map((year) => {
                         const value = formData[row.key][year] || "";
                         return (
-                          <td key={year}>
+                          <td key={year} className="text-right">
                             {row.isGreen ? (
-                              <span className="inline-block py-1 px-2 rounded-md bg-green-100 text-green-700 font-medium">
-                                {value}
-                              </span>
+                              <input
+                                type="text"
+                                name={`${row.key}_${year}`}
+                                value={value}
+                                onChange={(e) =>
+                                  handleInputChange(e, row.key, year)
+                                }
+                                placeholder="Enter value in €"
+                                className="py-1 px-2 text-right rounded-md border border-gray-300 bg-green-100 text-[#3b3f51] focus:outline-none focus:ring-1 focus:ring-[#3f4fff]"
+                              />
                             ) : (
                               <input
                                 type="text"
@@ -244,7 +254,7 @@ export default function ProfitAndLoss() {
                                   handleInputChange(e, row.key, year)
                                 }
                                 placeholder="Enter value in €"
-                                className="py-1 px-2 rounded-md border border-gray-300 bg-white text-[#3b3f51] focus:outline-none focus:ring-1 focus:ring-[#3f4fff]"
+                                className="py-1 px-2 text-right rounded-md border border-gray-300 bg-white text-[#3b3f51] focus:outline-none focus:ring-1 focus:ring-[#3f4fff]"
                               />
                             )}
                           </td>
