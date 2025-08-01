@@ -1,38 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle, Pencil, Info } from "lucide-react";
+import { CheckCircle, Pencil, Info, Coins } from "lucide-react";
 import { useSelector } from "react-redux";
 
-export default function ProfitAndLoss() {
+export default function BusinessPlan() {
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState();
 
   const currentYear = new Date().getFullYear();
-  const years = [currentYear - 3, currentYear - 2, currentYear - 1];
+  const years = [currentYear, currentYear + 1];
 
   const id = useSelector((state) => state.company.companyId);
 
   const rowMeta = [
-    { key: "sales", label: "Sales" },
-    { key: "provisioning", label: "Provisioning", hasTooltip: true },
+    { key: "bp_sales", label: "Sales" },
+    { key: "bp_provisioning", label: "Provisioning", hasTooltip: true },
     {
-      key: "grossMargin",
+      key: "bp_grossMargin",
       label: "Gross margin",
       isGreen: true,
     },
-    { key: "personnelCosts", label: "Personnel costs" },
-    { key: "otherOperatingCosts", label: "Other operating costs" },
+    { key: "bp_personnelCosts", label: "Personnel costs" },
+    { key: "bp_otherOperatingCosts", label: "Other operating costs" },
     {
-      key: "ebitda",
+      key: "bp_ebitda",
       label: "EBITDA",
       isGreen: true,
-      hasTooltip: true,
-    },
-    {
-      key: "adjustedEbitda",
-      label: "Adjusted EBITDA (optional)",
       hasTooltip: true,
     },
   ];
@@ -62,7 +57,7 @@ export default function ProfitAndLoss() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/company/profit-loss");
+        const res = await fetch("/api/company/business-plan");
         if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
         setFormData(data?.data);
@@ -78,7 +73,7 @@ export default function ProfitAndLoss() {
     setIsSaving(true);
 
     try {
-      const res = await fetch("/api/company/profit-loss", {
+      const res = await fetch("/api/company/business-plan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,11 +99,11 @@ export default function ProfitAndLoss() {
       <div className="flex justify-between items-start mb-4">
         <div>
           <h2 className="text-xl font-semibold text-[#0c1c3f]">
-            Profit and loss
+            Business Plan
           </h2>
           <p className="text-[#666c89] text-sm">
-            This panel is autocomplete with data extracted from the Commercial
-            Registry.
+            Data for the coming years has been automatically generated from
+            projections based on previous years.
           </p>
         </div>
 
@@ -133,33 +128,40 @@ export default function ProfitAndLoss() {
 
       {/* Main Content */}
       {!isEditing ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-[#f9fafc] p-6 rounded-xl relative">
-            <p className="text-sm text-[#666c89] mb-1">
-              Billing (sales) {years[2]}
-            </p>
-            <p className="text-2xl font-semibold text-[#3b3f51]">
-              {formData?.sales?.[years[2]]} €
-            </p>
+        <div className="border border-[#e5e8f0] rounded-2xl p-3 bg-white w-full mt-6">
+          {/* Header: Business Plan */}
+          <div className="p-3 bg-gray-100 rounded-xl flex items-center mb-4">
+            <div className="w-10 h-10 bg-gray-300 rounded-lg flex items-center justify-center mr-3">
+              <Coins className="h-5 w-5 text-[#3b3f51]" />
+            </div>
+            <div>
+              <p className="text-lg  font-medium">Business plan</p>
+              <p className="text-sm text-[#666c89]">
+                Evolution {years[0] - 1} - {years[1]}
+              </p>
+            </div>
           </div>
-          <div className="bg-[#f9fafc] p-6 rounded-xl relative">
-            <p className="text-sm text-[#666c89] mb-1">EBITDA {years[2]}</p>
-            <p className="text-2xl font-semibold text-[#3b3f51]">
-              {formData?.ebitda?.[years[2]]} €
-            </p>
+
+          {/* Pill-style KPIs */}
+          <div className="flex flex-wrap gap-3 mt-3 mb-3">
+            <div className="inline-flex items-center px-4 py-1.5 bg-[#eef1fd] rounded-lg space-x-2">
+              <span className="text-sm text-[#3b3f51] font-medium">
+                Gross margin
+              </span>
+              <span className="text-sm font-semibold text-[#1d2b7f]">
+                {formData?.bp_grossMargin?.[years[1]]} €
+              </span>
+            </div>
+            <div className="inline-flex items-center px-4 py-1.5 bg-[#eef1fd] rounded-lg space-x-2">
+              <span className="text-sm text-[#3b3f51] font-medium">EBITDA</span>
+              <span className="text-sm font-semibold text-[#1d2b7f]">
+                {formData?.bp_ebitda?.[years[1]]} €
+              </span>
+            </div>
           </div>
         </div>
       ) : (
         <>
-          <div className="bg-[#f0f4ff] p-3 rounded-md text-sm text-[#2a3281] mb-4">
-            <Info size={18} className="inline-block mr-3 text-[#2a3281]" />
-            <span className="font-medium">In your case, </span>
-            <span>
-              we <strong>have not found this information</strong> and you will
-              need to complete the panel manually.
-            </span>
-          </div>
-
           <form onSubmit={handleSave}>
             <div className="overflow-auto">
               <table className="w-full text-sm text-[#3b3f51] border-separate border-spacing-y-4">

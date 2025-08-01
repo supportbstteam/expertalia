@@ -159,12 +159,12 @@ export default function BasicInfo() {
               <input
                 type="text"
                 name="name"
-                value={companyData.name}
+                value={companyData?.name}
                 onChange={handleChange}
                 className="border border-[#ececf2] rounded-md p-2"
               />
             ) : (
-              <span>{companyData.name}</span>
+              <span>{companyData?.name}</span>
             )}
           </div>
           <div className="flex flex-col gap-1">
@@ -173,12 +173,12 @@ export default function BasicInfo() {
               <input
                 type="text"
                 name="nif"
-                value={companyData.nif}
+                value={companyData?.nif}
                 onChange={handleChange}
                 className="border border-[#ececf2] rounded-md p-2"
               />
             ) : (
-              <span>{companyData.nif}</span>
+              <span>{companyData?.nif}</span>
             )}
           </div>
           <div className="flex flex-col gap-1">
@@ -187,12 +187,12 @@ export default function BasicInfo() {
               <input
                 type="text"
                 name="postalCode"
-                value={companyData.postalCode}
+                value={companyData?.postalCode}
                 onChange={handleChange}
                 className="border border-[#ececf2] rounded-md p-2"
               />
             ) : (
-              <span>{companyData.postalCode}</span>
+              <span>{companyData?.postalCode}</span>
             )}
           </div>
         </div>
@@ -203,13 +203,13 @@ export default function BasicInfo() {
 
           {!isEditing ? (
             <div className="flex flex-wrap gap-4">
-              {companyData.sectors.map((sector, index) => (
+              {companyData?.sectors?.map((sector, index) => (
                 <div
                   key={index}
                   className="bg-white border border-[#ececf2] rounded-xl px-5 py-3 flex items-center gap-2 text-sm text-[#0c1c3f]"
                 >
-                  <span className="text-[#666c89]">{sector.category}</span>
-                  <span className="font-medium">{sector.name}</span>
+                  <span className="text-[#666c89]">{sector?.category}</span>
+                  <span className="font-medium">{sector?.name}</span>
                 </div>
               ))}
             </div>
@@ -220,10 +220,10 @@ export default function BasicInfo() {
                   Select sectors
                 </summary>
                 <div className="mt-2 max-h-40 overflow-y-auto flex flex-col gap-2">
-                  {availablesectors.map((sector, idx) => {
-                    const isChecked = companyData.sectors.some(
+                  {availablesectors?.map((sector, idx) => {
+                    const isChecked = companyData?.sectors?.some(
                       (t) =>
-                        t.category === sector.category && t.name === sector.name
+                        t?.category === sector?.category && t?.name === sector?.name
                     );
                     return (
                       <label key={idx} className="flex items-center gap-2">
@@ -232,26 +232,26 @@ export default function BasicInfo() {
                           checked={isChecked}
                           onChange={() => {
                             setCompanyData((prevData) => {
-                              const exists = prevData.sectors.some(
+                              const exists = prevData?.sectors?.some(
                                 (t) =>
-                                  t.category === sector.category &&
-                                  t.name === sector.name
+                                  t.category === sector?.category &&
+                                  t.name === sector?.name
                               );
                               const updatedsectors = exists
-                                ? prevData.sectors.filter(
+                                ? prevData?.sectors?.filter(
                                     (t) =>
                                       !(
-                                        t.category === sector.category &&
-                                        t.name === sector.name
+                                        t.category === sector?.category &&
+                                        t.name === sector?.name
                                       )
                                   )
-                                : [...prevData.sectors, sector];
+                                : [...prevData?.sectors, sector];
                               return { ...prevData, sectors: updatedsectors };
                             });
                           }}
                         />
                         <span className="text-sm text-[#0c1c3f]">
-                          {sector.category} - {sector.name}
+                          {sector?.category} - {sector?.name}
                         </span>
                       </label>
                     );
@@ -261,12 +261,12 @@ export default function BasicInfo() {
 
               {/* Selected sectors Preview */}
               <div className="mt-3 flex flex-wrap gap-2">
-                {companyData.sectors.map((sector, index) => (
+                {companyData?.sectors?.map((sector, index) => (
                   <span
                     key={index}
                     className="bg-[#eef0f6] px-3 py-1 rounded-full text-sm text-[#3f4fff] font-medium"
                   >
-                    {sector.name}
+                    {sector?.name}
                   </span>
                 ))}
               </div>

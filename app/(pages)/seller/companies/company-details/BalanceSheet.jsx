@@ -202,7 +202,7 @@ export default function BalanceSheet({ apiData }) {
                           {isGreen ? (
                             <input
                               type="text"
-                              value={formData[key]?.[year] || ""}
+                              value={formData?.[key]?.[year] || ""}
                               onChange={(e) =>
                                 handleChange(key, year, e.target.value)
                               }
@@ -211,7 +211,7 @@ export default function BalanceSheet({ apiData }) {
                           ) : (
                             <input
                               type="text"
-                              value={formData[key]?.[year] || ""}
+                              value={formData?.[key]?.[year] || ""}
                               onChange={(e) =>
                                 handleChange(key, year, e.target.value)
                               }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Bell } from "lucide-react";
+import { Bell, CircleUserRound } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
@@ -39,9 +39,11 @@ const Header = () => {
           </button>
           <div className="relative">
             <button
-              className="h-8 w-8 rounded-full bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="h-8 w-8 rounded-full focus:bg-gray-200"
               onClick={toggleDropdown}
-            ></button>
+            >
+              <CircleUserRound className="h-8 w-8 text-gray-600" strokeWidth={2}/>
+            </button>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                 <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">

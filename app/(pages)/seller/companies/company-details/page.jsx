@@ -3,6 +3,8 @@
 import BasicInfo from "./BasicInfo";
 import ProfitAndLoss from "./ProfitAndLoss";
 import BalanceSheet from "./BalanceSheet";
+import BusinessPlan from "./BusinessPlan";
+import SPC from "./SPC";
 
 export default function CompanyDetailsCard() {
   return (
@@ -10,6 +12,8 @@ export default function CompanyDetailsCard() {
       <BasicInfo />
       <ProfitAndLoss />
       <BalanceSheet />
+      <BusinessPlan />
+      <SPC />
     </>
   );
 }

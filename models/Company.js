@@ -109,6 +109,36 @@ const CompanySchema = new mongoose.Schema({
         of: String,
         default: {}
     },
+    bp_sales: {
+        type: Map,
+        of: String, // Store value like "1.450.000"
+        default: {}
+    },
+    bp_provisioning: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    bp_grossMargin: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    bp_personnelCosts: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    bp_otherOperatingCosts: {
+        type: Map,
+        of: String,
+        default: {}
+    },
+    bp_ebitda: {
+        type: Map,
+        of: String,
+        default: {}
+    },
     createdAt: {
         type: Date,
         default: Date.now
