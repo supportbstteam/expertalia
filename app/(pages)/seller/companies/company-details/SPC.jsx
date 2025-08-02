@@ -5,8 +5,13 @@ import {
   CheckCircle,
   Pencil,
   CirclePercent,
+  User,
   UsersRound,
   PackageOpen,
+  Crosshair,
+  Trash2,
+  ShoppingBag,
+  Building2,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 
@@ -14,29 +19,26 @@ export default function SPC() {
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState();
-
-  const currentYear = new Date().getFullYear();
-  const years = [currentYear, currentYear + 1];
+  const [shareholder, setShareholder] = useState([1]);
+  const [clients, setClients] = useState([1]);
+  const [products, setProducts] = useState([1]); // New state for products
+  const [clientType, setClientType] = useState(1); // New state for client type
 
   const id = useSelector((state) => state.company.companyId);
-
-  const rowMeta = [
-    { key: "bp_sales", label: "Sales" },
-    { key: "bp_provisioning", label: "Provisioning", hasTooltip: true },
-    {
-      key: "bp_grossMargin",
-      label: "Gross margin",
-      isGreen: true,
-    },
-    { key: "bp_personnelCosts", label: "Personnel costs" },
-    { key: "bp_otherOperatingCosts", label: "Other operating costs" },
-    {
-      key: "bp_ebitda",
-      label: "EBITDA",
-      isGreen: true,
-      hasTooltip: true,
-    },
-  ];
+  const initialData = {
+    shareholders: [
+      {
+        name: "",
+        percentage: "",
+      },
+    ],
+    products: [
+      {
+        name: "",
+        description: "",
+      },
+    ],
+  };
 
   useEffect(() => {
     if (id) {
@@ -49,37 +51,27 @@ export default function SPC() {
 
   const handleToggleEdit = () => setIsEditing((prev) => !prev);
 
-  const handleInputChange = (e, rowKey, year) => {
-    const { value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [rowKey]: {
-        ...prev[rowKey],
-        [year]: value,
-      },
-    }));
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/company/business-plan");
-        if (!res.ok) throw new Error("Failed to fetch data");
-        const data = await res.json();
-        setFormData(data?.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch("/api/company/business-plan");
+  //       if (!res.ok) throw new Error("Failed to fetch data");
+  //       const data = await res.json();
+  //       setFormData(data?.data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   const handleSave = async (e) => {
     e.preventDefault();
     setIsSaving(true);
+    console.log("hii", formData);
 
     try {
-      const res = await fetch("/api/company/business-plan", {
+      const res = await fetch("/api/company/spc", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -201,7 +193,7 @@ export default function SPC() {
               social capital.
             </p>
 
-            {[1, 2].map((num) => (
+            {shareholder.map((num) => (
               <div
                 key={num}
                 className="flex items-center justify-between mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]"
@@ -223,7 +215,7 @@ export default function SPC() {
                   </div>
                   <input
                     type="range"
-                    className="w-full"
+                    className="w-full accent-[#3949ab]"
                     min="0"
                     max="100"
                     value={formData?.shareholders?.[num]?.percentage || 0}
@@ -244,12 +236,25 @@ export default function SPC() {
 
                 {/* Delete button (fixed width) */}
                 <div className="flex-shrink-0 ml-3 p-2">
-                  <button className="text-[#1d2b7f] text-xl">🗑</button>
+                  <button
+                    className="text-[#1d2b7f] text-xl"
+                    onClick={() => {
+                      setShareholder(shareholder.filter((p) => p !== num));
+                    }}
+                  >
+                    <Trash2 className="w-7 h-7" />
+                  </button>
                 </div>
               </div>
             ))}
 
-            <button className="text-sm text-[#1d2b7f] font-semibold mt-2">
+            <button
+              type="button"
+              onClick={() =>
+                setShareholder([...shareholder, shareholder.length + 1])
+              }
+              className="text-sm text-[#1d2b7f] font-semibold mt-2"
+            >
               + Add shareholder
             </button>
           </div>
@@ -272,75 +277,106 @@ export default function SPC() {
               You carry the 0% sales associated with products and services.
             </p>
 
-            {/* Product Card */}
-            <div className="border border-[#e5e8f0] rounded-2xl bg-white max-w-lg overflow-hidden shadow-sm mb-4">
-              {/* Header */}
-              <div className="flex justify-between items-center bg-[#f9fafc] px-4 py-2 rounded-t-2xl">
-                <span className="text-sm font-medium text-[#3b3f51] px-2 py-1 border border-[#d0d5e4] rounded-md">
-                  Product 1
-                </span>
-                <button className="text-[#1d2b7f] text-sm flex items-center gap-1">
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                  Delete
-                </button>
-              </div>
+            {/* Product Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              {products.map((num) => (
+                <div
+                  key={num}
+                  className="border border-[#e5e8f0] rounded-2xl bg-white overflow-hidden shadow-sm"
+                >
+                  {/* Header */}
+                  <div className="flex justify-between items-center bg-[#f9fafc] px-4 py-2 rounded-t-2xl">
+                    <span className="text-sm font-medium text-[#3b3f51] px-2 py-1 border border-[#d0d5e4] rounded-md">
+                      Product {num}
+                    </span>
+                    <button
+                      className="text-[#1d2b7f] text-sm flex items-center gap-1"
+                      onClick={() => {
+                        setProducts(products.filter((p) => p !== num));
+                      }}
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
+                  </div>
 
-              {/* Content */}
-              <div className="p-4">
-                {/* Product name input */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-[#f2f5ff] rounded-xl">
-                    <PackageOpen className="h-6 w-6 text-[#1d2b7f]" />
-                  </div>
-                  <div className="flex-1">
-                    <label className="text-sm text-[#666c89] block mb-1">
-                      Product and/or service
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full border-b border-[#e5e8f0] text-sm text-[#3b3f51] focus:outline-none pb-1"
-                      value="test"
-                    />
-                  </div>
-                </div>
-
-                {/* Slider input */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-[#f2f5ff] rounded-xl">
-                    <CirclePercent className="h-6 w-6 text-[#1d2b7f]" />
-                  </div>
-                  <div className="flex-grow flex-col">
-                    <div className="flex justify-between">
-                      <label className="text-sm text-[#666c89] block mb-1">
-                        % on sales
-                      </label>
-                      <span className="text-sm text-[#3b3f51]">0%</span>
+                  {/* Content */}
+                  <div className="p-4">
+                    {/* Product name input */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-3 bg-[#f2f5ff] rounded-xl">
+                        <PackageOpen className="h-6 w-6 text-[#1d2b7f]" />
+                      </div>
+                      <div className="flex-1">
+                        <label className="text-sm text-[#666c89] block mb-1">
+                          Product and/or service
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full border-b border-[#e5e8f0] text-sm text-[#3b3f51] focus:outline-none pb-1"
+                          placeholder="Enter product name"
+                          value={formData?.products?.[num]?.name || ""}
+                          onChange={(e) => {
+                            setFormData((prev) => ({
+                              ...prev,
+                              products: {
+                                ...prev?.products,
+                                [num]: {
+                                  ...prev?.products?.[num],
+                                  name: e.target.value,
+                                },
+                              },
+                            }));
+                          }}
+                        />
+                      </div>
                     </div>
-                    <input
-                      type="range"
-                      className="w-full accent-[#3949ab]"
-                      min="0"
-                      max="100"
-                    />
+
+                    {/* Slider input */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-3 bg-[#f2f5ff] rounded-xl">
+                        <CirclePercent className="h-6 w-6 text-[#1d2b7f]" />
+                      </div>
+                      <div className="flex-grow flex-col">
+                        <div className="flex justify-between">
+                          <label className="text-sm text-[#666c89] block mb-1">
+                            % on sales
+                          </label>
+                          <span className="text-sm text-[#3b3f51]">
+                            {formData?.products?.[num]?.percentage || 0}%
+                          </span>
+                        </div>
+                        <input
+                          type="range"
+                          className="w-full accent-[#3949ab]"
+                          min="0"
+                          max="100"
+                          value={formData?.products?.[num]?.percentage || 0}
+                          onChange={(e) => {
+                            setFormData((prev) => ({
+                              ...prev,
+                              products: {
+                                ...prev?.products,
+                                [num]: {
+                                  ...prev?.products?.[num],
+                                  percentage: parseInt(e.target.value),
+                                },
+                              },
+                            }));
+                          }}
+                          // onBlur={handleValidation} // Add this line to trigger validation on mouse up
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
 
             {/* Add Button */}
-            <button className="text-sm text-[#1d2b7f] font-semibold mt-2">
+            <button
+              className="text-sm text-[#1d2b7f] font-semibold mt-2"
+              onClick={() => setProducts([...products, products.length + 1])}
+            >
               + Add product
             </button>
           </div>
@@ -368,17 +404,178 @@ export default function SPC() {
                     name="clientType"
                     className="accent-[#1d2b7f]"
                     defaultChecked={i === 1}
+                    onClick={() => {
+                      setClientType(i);
+                      setFormData((prev) => {
+                        const newData = { ...prev };
+                        if (i === 0) {
+                          delete newData.cc;
+                        }
+                        if (i === 2) {
+                          delete newData.clients;
+                        }
+                        return newData;
+                      });
+                    }}
                   />
                   <span className="text-lg text-[#3b3f51]">{option}</span>
                 </label>
               ))}
             </div>
+            {clientType === 0 && (
+              <>
+                {clients.map((num) => (
+                  <div
+                    key={num}
+                    className="flex items-center justify-between mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]"
+                  >
+                    {/* Icon (fixed width) */}
+                    <div className="relative w-9 h-9 mr-2">
+                      <Crosshair
+                        strokeWidth={0.5}
+                        className="absolute inset-0 w-full h-full text-[#1d2b7f]"
+                      />
+                      <User
+                        strokeWidth={2}
+                        className="absolute inset-2.5 w-4 h-4 text-[#1d2b7f]"
+                      />
+                    </div>
+
+                    {/* Slider and labels (expand to fill space) */}
+                    <div className="flex flex-col flex-grow gap-2">
+                      <div className="flex justify-between w-full">
+                        <span className="text-sm text-[#3b3f51] font-medium">
+                          Client {num}
+                        </span>
+                        <span className="text-sm text-[#3b3f51] font-semibold">
+                          {formData?.clients?.[num]?.percentage || 0}%
+                        </span>
+                      </div>
+                      <input
+                        type="range"
+                        className="w-full accent-[#3949ab]"
+                        min="0"
+                        max="100"
+                        value={formData?.clients?.[num]?.percentage || 0}
+                        onChange={(e) => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            clients: {
+                              ...prev?.clients,
+                              [num]: {
+                                ...prev?.clients?.[num],
+                                percentage: parseInt(e.target.value),
+                              },
+                            },
+                          }));
+                        }}
+                      />
+                    </div>
+
+                    {/* Delete button (fixed width) */}
+                    <div className="flex-shrink-0 ml-3 p-2">
+                      <button
+                        className="text-[#1d2b7f] text-xl"
+                        onClick={() => {
+                          setClients(clients.filter((p) => p !== num));
+                        }}
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => setClients([...clients, clients.length + 1])}
+                  className="text-sm text-[#1d2b7f] font-semibold mt-2"
+                >
+                  + Add client
+                </button>
+              </>
+            )}
+            {clientType === 2 && (
+              <>
+                <div className="flex items-center justify-between mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]">
+                    {/* Icon (fixed width) */}
+                    <div className="flex items-center">
+                      <Building2 className="w-7 h-7 mr-3 text-[#1d2b7f]" />
+                    </div>
+
+                  {/* Slider and labels (expand to fill space) */}
+                  <div className="flex flex-col flex-grow gap-2">
+                    <div className="flex justify-between w-full">
+                      <span className="text-sm text-[#3b3f51] font-medium">
+                        Sale to Companies
+                      </span>
+                      <span className="text-sm text-[#3b3f51] font-semibold">
+                        {formData?.cc?.company || 0}%
+                      </span>
+                    </div>
+                    <input
+                      type="range"
+                      className="w-full accent-[#3949ab]"
+                      min="0"
+                      max="100"
+                      value={formData?.cc?.company || 0}
+                      onChange={(e) => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          cc: {
+                            ...prev?.cc,
+                            company: parseInt(e.target.value),
+                          },
+                        }));
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center justify-between mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]">
+                  {/* Icon (fixed width) */}
+                  <div className="flex items-center">
+                    <ShoppingBag className="w-7 h-7 mr-3 text-[#1d2b7f]" />
+                  </div>
+
+                  {/* Slider and labels (expand to fill space) */}
+                  <div className="flex flex-col flex-grow gap-2">
+                    <div className="flex justify-between w-full">
+                      <span className="text-sm text-[#3b3f51] font-medium">
+                        Sale to Final Consumer
+                      </span>
+                      <span className="text-sm text-[#3b3f51] font-semibold">
+                        {formData?.cc?.consumer || 0}%
+                      </span>
+                    </div>
+                    <input
+                      type="range"
+                      className="w-full accent-[#3949ab]"
+                      min="0"
+                      max="100"
+                      value={formData?.cc?.consumer || 0}
+                      onChange={(e) => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          cc: {
+                            ...prev?.cc,
+                            consumer: parseInt(e.target.value),
+                          },
+                        }));
+                      }}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Save Button */}
           <div className="flex justify-end pt-6">
-            <button className="bg-[#3b4cca] hover:bg-[#2a3ab9] text-white px-6 py-2 rounded-lg text-sm font-medium">
-              Save
+            <button
+              className="bg-[#3b4cca] hover:bg-[#2a3ab9] text-white px-6 py-2 rounded-lg text-sm font-medium"
+              onClick={handleSave}
+              // disabled={isSaving}
+            >
+              {isSaving ? "Saving..." : "Save"}
             </button>
           </div>
         </div>

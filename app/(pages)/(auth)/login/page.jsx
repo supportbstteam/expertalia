@@ -9,24 +9,37 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-    if (res.ok) {
-      const session = await getSession();
-      console.log(session?.user);
-      if (session?.user?.userType === "seller") {
-        router.push("/seller/dashboard");
-      } else if (session?.user?.userType === "buyer") {
-        router.push("/");
+    setIsLoading(true);
+    
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      
+      if (res.ok) {
+        const session = await getSession();
+        console.log(session?.user);
+        if (session?.user?.userType === "seller") {
+          router.push("/seller/dashboard");
+        } else if (session?.user?.userType === "buyer") {
+          router.push("/");
+        }
+      } else {
+        alert("Login failed");
+        setIsLoading(false);
       }
-    } else alert("Login failed");
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred during login");
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -137,9 +150,13 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="w-full py-2 bg-gradient-to-r from-blue-700 to-blue-900 text-white font-semibold rounded-md shadow hover:opacity-90 transition-transform transform hover:scale-[1.01]"
+              disabled={isLoading}
+              className="w-full py-2 bg-gradient-to-r from-blue-700 to-blue-900 text-white font-semibold rounded-md shadow hover:opacity-90 transition-transform transform hover:scale-[1.01] flex items-center justify-center"
             >
-              Sign in
+              <span>Sign in</span>
+              {isLoading && (
+                <span className="ml-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em]"></span>
+              )}
             </button>
           </form>
 

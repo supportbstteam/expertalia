@@ -77,7 +77,6 @@ export default function BalanceSheet({ apiData }) {
         const res = await fetch("/api/company/balance-sheet");
         if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
-        console.log(data);
         setFormData(data?.data);
       } catch (err) {
         console.error(err);
@@ -89,7 +88,6 @@ export default function BalanceSheet({ apiData }) {
   const handleSave = async (e) => {
     e.preventDefault();
     setIsSaving(true);
-    console.log(formData);
 
     try {
       const res = await fetch("/api/company/balance-sheet", {
@@ -102,7 +100,7 @@ export default function BalanceSheet({ apiData }) {
 
       if (!res.ok) throw new Error("Failed to save data");
 
-      console.log("Saved successfully", await res.json());
+      console.log("Saved successfully");
       setIsEditing(false);
     } catch (err) {
       console.error(err);

@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+const EntitySchema = new mongoose.Schema({}, { strict: false }); // Flexible schema
+
 const CompanySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -138,6 +140,26 @@ const CompanySchema = new mongoose.Schema({
         type: Map,
         of: String,
         default: {}
+    },
+    clients: {
+        type: Map,
+        of: EntitySchema, // each value is an object with dynamic structure
+        default: {},
+    },
+    products: {
+        type: Map,
+        of: EntitySchema,
+        default: {},
+    },
+    shareholders: {
+        type: Map,
+        of: EntitySchema,
+        default: {},
+    },
+    cc: {
+        type: Map,
+        of: String,
+        default: {},
     },
     createdAt: {
         type: Date,
