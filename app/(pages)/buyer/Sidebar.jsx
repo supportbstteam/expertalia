@@ -19,8 +19,8 @@ const Sidebar = () => {
       href: "#", // Use '#' as a placeholder for the main link if it's just a toggle
       onClick: () => setIsCompaniesSubMenuOpen(!isCompaniesSubMenuOpen),
       subMenu: [
-        { title: "Basic Information", href: "/seller/companies/company-details?tab=company" },
-        { title: "Documentation", href: "/seller/companies/company-details?tab=documents" },
+        { title: "Basic Information", href: "/seller/companies/company-details" },
+        { title: "Documentation", href: "/seller/companies/documentation" },
       ],
     },
   ];

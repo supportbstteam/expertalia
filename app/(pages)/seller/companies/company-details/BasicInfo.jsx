@@ -76,44 +76,10 @@ export default function BasicInfo() {
   }
 
   return (
-    <section className="p-6 rounded-xl shadow-sm bg-white mb-6">
-      {/* Info Banner */}
-      <div className="bg-yellow-100 border border-yellow-200 rounded-md p-4 text-sm text-yellow-800 flex justify-between items-center mb-6">
-        <span>
-          <strong>You have information pending to fill out.</strong> Complete
-          and check that your information is correct, or contact a Deal Manager.
-        </span>
-        <a href="#" className="underline font-medium">
-          Contact
-        </a>
-      </div>
-
-      {/* Header & Actions */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
-        <h2 className="text-2xl font-semibold text-[#0c1c3f]">
-          Company details
-        </h2>
-        <div className="flex gap-3 mt-4 md:mt-0">
-          <button className="border border-[#cfcfe4] rounded-full px-5 py-2 text-sm font-medium hover:bg-gray-100 transition">
-            Download Teaser
-          </button>
-          <button className="bg-[#3f4fff] hover:bg-[#2f3fe4] text-white rounded-full px-5 py-2 text-sm font-medium">
-            Company state
-          </button>
-        </div>
-      </div>
-
-      {/* Tabs */}
-      <div className="flex border-b text-sm mb-6 space-x-8">
-        <button className="pb-2 border-b-2 border-[#3f4fff] font-medium text-[#0c1c3f]">
-          Company information
-        </button>
-        <button className="text-[#666c89]">Transaction information</button>
-        <button className="text-[#666c89]">Additional documentation</button>
-      </div>
-
+    <section className="mb-6">
+  
       {/* Basic Info Box */}
-      <div className="bg-[#f9f9fb] border border-[#ececf2] rounded-xl p-6">
+      <div className="bg-white border border-[#ececf2] rounded-xl p-6">
         <div className="flex justify-between items-start mb-6">
           <div>
             <h3 className="text-lg font-semibold text-[#0c1c3f]">

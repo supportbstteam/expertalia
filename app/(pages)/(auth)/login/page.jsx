@@ -15,22 +15,22 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     try {
       const res = await signIn("credentials", {
         redirect: false,
         email,
         password,
       });
-      
+
       if (res.ok) {
         const session = await getSession();
         if (session?.user?.userType === "seller") {
           router.push("/seller/dashboard");
         } else if (session?.user?.userType === "buyer") {
-          router.push("/");
-        } else if(session?.user?.userType === "admin"){
-          router.push("/admin/dashboard");
+          router.push("/buyer/dashboard");
+        } else {
+          alert("You are not authorized to access this page");
         }
       } else {
         alert("Login failed");

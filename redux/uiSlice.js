@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isSidebarOpen: true,
+  companyInfoTab: 'company',
 };
 
 const uiSlice = createSlice({
@@ -17,8 +18,12 @@ const uiSlice = createSlice({
     openSidebar: (state) => {
       state.isSidebarOpen = true;
     },
+    setCompanyInfoTab: (state, action) => {
+      state.companyInfoTab = action.payload;
+    },
   },
 });
 
-export const { toggleSidebar, closeSidebar, openSidebar } = uiSlice.actions;
+export const { toggleSidebar, closeSidebar, openSidebar, setCompanyInfoTab } = uiSlice.actions;
+
 export default uiSlice.reducer;
