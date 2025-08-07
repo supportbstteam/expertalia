@@ -2,18 +2,17 @@
 
 import { CheckCircle, Pencil } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { setCompanyId } from '@/redux/companySlice';
+import { useDispatch } from "react-redux";
+import { setCompanyId } from "@/redux/companySlice";
 
 export default function BasicInfo() {
-
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true); // loading state
   const [companyData, setCompanyData] = useState({
     name: "",
     nif: "",
-    postalCode: "",
+    zipCode: "",
     sectors: [],
   });
 
@@ -186,13 +185,13 @@ export default function BasicInfo() {
             {isEditing ? (
               <input
                 type="text"
-                name="postalCode"
-                value={companyData?.postalCode}
+                name="zipCode"
+                value={companyData?.zipCode}
                 onChange={handleChange}
                 className="border border-[#ececf2] rounded-md p-2"
               />
             ) : (
-              <span>{companyData?.postalCode}</span>
+              <span>{companyData?.zipCode}</span>
             )}
           </div>
         </div>
@@ -223,7 +222,8 @@ export default function BasicInfo() {
                   {availablesectors?.map((sector, idx) => {
                     const isChecked = companyData?.sectors?.some(
                       (t) =>
-                        t?.category === sector?.category && t?.name === sector?.name
+                        t?.category === sector?.category &&
+                        t?.name === sector?.name
                     );
                     return (
                       <label key={idx} className="flex items-center gap-2">

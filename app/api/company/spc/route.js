@@ -4,18 +4,19 @@ import Company from '@/models/Company';
 import dbConnect from '@/lib/dbconnect';
 
 export async function GET(req) {
-    const user = await getAuthUser(req);
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    await dbConnect();
-    const company = await Company.findOne({ user: user._id });
-    const data = {
-        shareholders: company.shareholders,
-        cc: company.cc,
-        clients: company.clients,
-        products: company.products,
-        _id: company._id,
-    }
-    return NextResponse.json({ data });
+  const user = await getAuthUser(req);
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  await dbConnect();
+  const company = await Company.findOne({ user: user._id });
+  const data = {
+    shareholders: company.shareholders,
+    cc: company.cc,
+    clients: company.clients,
+    products: company.products,
+    clientType: company.clientType,
+    _id: company._id,
+  }
+  return NextResponse.json({ data });
 }
 
 export async function POST(req) {
@@ -26,12 +27,12 @@ export async function POST(req) {
     }
 
     await dbConnect();
-    const { _id, shareholders, cc, clients, products } = await req.json();
+    const { _id, shareholders, cc, clients, products, clientType } = await req.json();
     let company;
     if (_id) {
       company = await Company.findOneAndUpdate(
         { _id: _id, user: user._id },
-        { shareholders, cc, clients, products },
+        { shareholders, cc, clients, products, clientType },
         { new: true, runValidators: true }
       );
     } else {
@@ -41,6 +42,7 @@ export async function POST(req) {
         cc,
         clients,
         products,
+        clientType,
       });
       await company.save();
     }

@@ -42,11 +42,17 @@ const Header = () => {
               className="h-8 w-8 rounded-full focus:bg-gray-200"
               onClick={toggleDropdown}
             >
-              <CircleUserRound className="h-8 w-8 text-gray-600" strokeWidth={2}/>
+              <CircleUserRound
+                className="h-8 w-8 text-gray-600"
+                strokeWidth={2}
+              />
             </button>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <Link
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
                   Profile
                 </Link>
                 <button

@@ -25,11 +25,12 @@ export default function LoginPage() {
       
       if (res.ok) {
         const session = await getSession();
-        console.log(session?.user);
         if (session?.user?.userType === "seller") {
           router.push("/seller/dashboard");
         } else if (session?.user?.userType === "buyer") {
           router.push("/");
+        } else if(session?.user?.userType === "admin"){
+          router.push("/admin/dashboard");
         }
       } else {
         alert("Login failed");

@@ -51,19 +51,24 @@ export default function SPC() {
 
   const handleToggleEdit = () => setIsEditing((prev) => !prev);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch("/api/company/business-plan");
-  //       if (!res.ok) throw new Error("Failed to fetch data");
-  //       const data = await res.json();
-  //       setFormData(data?.data);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/company/spc");
+        if (!res.ok) throw new Error("Failed to fetch data");
+        const data = await res.json();
+        setFormData(data?.data);
+        setShareholder(Object.keys(data?.data?.shareholders));
+        setProducts(Object.keys(data?.data?.products));
+        setClients(Object.keys(data?.data?.clients));
+        setClientType(data?.data?.clientType);
+        console.log(data?.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -143,14 +148,19 @@ export default function SPC() {
 
             {/* Pill-style KPIs */}
             <div className="flex flex-wrap gap-3 mt-3 mb-3">
-              <div className="inline-flex items-center px-4 py-1.5 bg-[#eef1fd] rounded-lg space-x-2">
-                <span className="text-sm text-[#3b3f51] font-medium">
-                  Shareholder 1
-                </span>
-                <span className="text-sm font-semibold text-[#1d2b7f] bg-gray-300 rounded-sm px-2 py-0.5">
-                  100 %{/* {formData?.bp_grossMargin?.[years[1]]} % */}
-                </span>
-              </div>
+              {shareholder.map((i) => (
+                <div
+                  key={i}
+                  className="inline-flex items-center px-4 py-1.5 bg-[#eef1fd] rounded-lg space-x-2"
+                >
+                  <span className="text-sm text-[#3b3f51] font-medium">
+                    Shareholder {i}
+                  </span>
+                  <span className="text-sm font-semibold text-[#1d2b7f] bg-gray-300 rounded-sm px-2 py-0.5">
+                    {formData?.shareholders?.[i]?.percentage} %
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
           <div className="border border-[#e5e8f0] rounded-2xl p-3 bg-white w-full">
@@ -167,14 +177,19 @@ export default function SPC() {
 
             {/* Pill-style KPIs */}
             <div className="flex flex-wrap gap-3 mt-3 mb-3">
-              <div className="inline-flex items-center px-4 py-1.5 bg-[#eef1fd] rounded-lg space-x-2">
-                <span className="text-sm text-[#3b3f51] font-medium">
-                  Gross margin
-                </span>
-                <span className="text-sm font-semibold text-[#1d2b7f] bg-gray-300 rounded-sm px-2 py-0.5">
-                  100 %{/* {formData?.bp_grossMargin?.[years[1]]} % */}
-                </span>
-              </div>
+              {products.map((i) => (
+                <div
+                  key={i}
+                  className="inline-flex items-center px-4 py-1.5 bg-[#eef1fd] rounded-lg space-x-2"
+                >
+                  <span className="text-sm text-[#3b3f51] font-medium">
+                    Product {i}
+                  </span>
+                  <span className="text-sm font-semibold text-[#1d2b7f] bg-gray-300 rounded-sm px-2 py-0.5">
+                    {formData?.products?.[i]?.percentage} %
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -392,7 +407,7 @@ export default function SPC() {
               sum reaches 100% of sales.
             </p>
 
-            <div className="flex flex-col space-y-2 p-2">
+            <div className="flex flex-col space-y-2 p-2 mb-4">
               {[
                 "I sell to companies",
                 "I sell to final consumer",
@@ -403,17 +418,23 @@ export default function SPC() {
                     type="radio"
                     name="clientType"
                     className="accent-[#1d2b7f]"
-                    defaultChecked={i === 1}
+                    defaultChecked={i === clientType}
                     onClick={() => {
                       setClientType(i);
                       setFormData((prev) => {
                         const newData = { ...prev };
                         if (i === 0) {
+                          newData.clientType = 0;
                           delete newData.cc;
                         }
+                        if (i === 1) {
+                          newData.clientType = 1;
+                        }
                         if (i === 2) {
+                          newData.clientType = 2;
                           delete newData.clients;
                         }
+
                         return newData;
                       });
                     }}
@@ -424,10 +445,11 @@ export default function SPC() {
             </div>
             {clientType === 0 && (
               <>
+                <span className="text-sm text-green-600">With current clients and %, you have completed the 100% sales.</span>
                 {clients.map((num) => (
                   <div
                     key={num}
-                    className="flex items-center justify-between mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]"
+                    className="flex items-center justify-between mt-4 mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]"
                   >
                     {/* Icon (fixed width) */}
                     <div className="relative w-9 h-9 mr-2">
@@ -496,11 +518,12 @@ export default function SPC() {
             )}
             {clientType === 2 && (
               <>
-                <div className="flex items-center justify-between mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]">
-                    {/* Icon (fixed width) */}
-                    <div className="flex items-center">
-                      <Building2 className="w-7 h-7 mr-3 text-[#1d2b7f]" />
-                    </div>
+                <span className="text-sm text-green-600">With current clients and %, you have completed the 100% sales.</span>
+                <div className="flex items-center justify-between mt-4 mb-4 bg-[#f9fafc] p-3 rounded-lg border border-[#e5e8f0]">
+                  {/* Icon (fixed width) */}
+                  <div className="flex items-center">
+                    <Building2 className="w-7 h-7 mr-3 text-[#1d2b7f]" />
+                  </div>
 
                   {/* Slider and labels (expand to fill space) */}
                   <div className="flex flex-col flex-grow gap-2">
@@ -524,6 +547,7 @@ export default function SPC() {
                           cc: {
                             ...prev?.cc,
                             company: parseInt(e.target.value),
+                            consumer: 100 - parseInt(e.target.value),
                           },
                         }));
                       }}
@@ -558,6 +582,7 @@ export default function SPC() {
                           cc: {
                             ...prev?.cc,
                             consumer: parseInt(e.target.value),
+                            company: 100 - parseInt(e.target.value),
                           },
                         }));
                       }}

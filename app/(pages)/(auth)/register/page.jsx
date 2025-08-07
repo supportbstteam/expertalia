@@ -61,20 +61,38 @@ export default function RegisterPage({ searchParams }) {
           )}
 
           <form action={register} className="space-y-4">
-            {/* Full Name */}
+            {/* First Name */}
             <div>
               <label
-                htmlFor="name"
+                htmlFor="first_name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Full Name <span className="text-red-500">*</span>
+                First Name <span className="text-red-500">*</span>
               </label>
               <input
-                id="name"
-                name="name"
+                id="first_name"
+                name="first_name"
                 type="text"
                 required
-                placeholder="Enter your full name"
+                placeholder="Enter your first name"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Last Name */}
+            <div>
+              <label
+                htmlFor="last_name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Last Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="last_name"
+                name="last_name"
+                type="text"
+                required
+                placeholder="Enter your last name"
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -94,6 +112,25 @@ export default function RegisterPage({ searchParams }) {
                 autoComplete="email"
                 required
                 placeholder="Enter your email"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Phone */}
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Phone number <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                required
+                placeholder="Enter your phone number"
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>

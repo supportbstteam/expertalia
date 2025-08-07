@@ -8,14 +8,20 @@ export async function register(formData) {
 
     await dbConnect();
 
-    const name = formData.get('name');
+    const first_name = formData.get('first_name');
+    const last_name = formData.get('last_name');
     const email = formData.get('email');
+    const phone = formData.get('phone');
     const password = formData.get('password');
     const userType = formData.get('userType');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{10}$/;
 
-    if (!name || !email || !password) {
+    if (!first_name || !last_name || !email || !phone || !password) {
         redirect('/register?error=All fields are required');
+    }
+    if (!phoneRegex.test(phone)) {
+        redirect('/register?error=Invalid phone number format');
     }
     if (!emailRegex.test(email)) {
         redirect('/register?error=Invalid email format');
@@ -31,8 +37,10 @@ export async function register(formData) {
 
     // Create new user
     const user = await User.create({
-        name,
+        first_name,
+        last_name,
         email,
+        phone,
         password: hashedPassword,
         userType,
     });

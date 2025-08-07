@@ -15,7 +15,7 @@ const CompanySchema = new mongoose.Schema({
     nif: {
         type: String,
     },
-    postalCode: {
+    zipCode: {
         type: String,
     },
     sectors: [{
@@ -160,6 +160,10 @@ const CompanySchema = new mongoose.Schema({
         type: Map,
         of: String,
         default: {},
+    },
+    clientType: {
+        type: Number,
+        default: 1,
     },
     createdAt: {
         type: Date,

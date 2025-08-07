@@ -4,11 +4,11 @@ import Company from '@/models/Company';
 import dbConnect from '@/lib/dbconnect';
 
 export async function GET(req) {
-    const user = await getAuthUser(req);
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    await dbConnect();
-    const company = await Company.findOne({ user: user._id });
-    return NextResponse.json({ company });
+  const user = await getAuthUser(req);
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  await dbConnect();
+  const company = await Company.findOne({ user: user._id });
+  return NextResponse.json({ company });
 }
 
 export async function POST(req) {
@@ -20,7 +20,7 @@ export async function POST(req) {
 
     await dbConnect();
 
-    const { _id, name, nif, postalCode, sectors } = await req.json();
+    const { _id, name, nif, zipCode, sectors } = await req.json();
 
     let company;
 
@@ -28,7 +28,7 @@ export async function POST(req) {
       // If _id is provided, try to find and update the existing company
       company = await Company.findOneAndUpdate(
         { _id: _id, user: user._id },
-        { name, nif, postalCode, sectors },
+        { name, nif, zipCode, sectors },
         { new: true, runValidators: true }
       );
 
@@ -40,7 +40,7 @@ export async function POST(req) {
       company = new Company({
         name,
         nif,
-        postalCode,
+        zipCode,
         sectors,
         user: user._id,
       });
