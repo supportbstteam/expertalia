@@ -1,5 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { getMessages } from "@/lib/getMessages";
+import { useSelector } from "react-redux";
 
 const companies = [
   { name: "PureGlow Organics", tag: "Profitable" },
@@ -10,7 +13,17 @@ const companies = [
 ];
 
 export default function AcquisitionList() {
+  const reduxLang = useSelector((state) => state.language.lang);
   const [currentPage, setCurrentPage] = useState(0);
+  const [lang, setLang] = useState(reduxLang);
+
+  useEffect(() => {
+    const storedLang = localStorage.getItem("lang");
+    if (storedLang) {
+      setLang(storedLang);
+    }
+  }, [reduxLang]);
+  const t = getMessages(lang);
   const cardsPerPage = 3;
 
   const start = currentPage * cardsPerPage;
@@ -18,13 +31,8 @@ export default function AcquisitionList() {
 
   return (
     <section className="bg-white px-2 md:px-2 py-20 text-center">
-      <h2 className="text-2xl md:text-3xl font-bold text-[#0c1c3f]">
-        Companies Ready for Acquisition
-      </h2>
-      <p className="text-gray-500 mt-3 mb-12">
-        Discover vetted businesses across industries, ready for acquisition
-        today.
-      </p>
+      <h2 className="text-2xl md:text-3xl font-bold text-[#0c1c3f]">{t.s14}</h2>
+      <p className="text-gray-500 mt-3 mb-12">{t.s15}</p>
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 w-full max-w-6xl mx-auto">
@@ -46,11 +54,11 @@ export default function AcquisitionList() {
       </div>
 
       <div className="flex items-center justify-center gap-4 text-sm">
-        <a 
-          href="#" 
+        <a
+          href="#"
           className="border-2 border-[#04295e] text-[#04295e] px-6 py-2 rounded-lg hover:bg-blue-50 transition-colors duration-200"
         >
-          View All Listings
+          {t.s16}
         </a>
       </div>
     </section>

@@ -1,29 +1,45 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import Link from "next/link";
-import {
-  Home,
-  Building2,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import dynamic from "next/dynamic";
 
-const Sidebar = () => {
-  const [isCompaniesSubMenuOpen, setIsCompaniesSubMenuOpen] = useState(false);
+// Lazy load icons
+const HomeIcon = dynamic(() => import("lucide-react").then(mod => mod.Home), { ssr: false });
+const Building2Icon = dynamic(() => import("lucide-react").then(mod => mod.Building2), { ssr: false });
+const ChevronDownIcon = dynamic(() => import("lucide-react").then(mod => mod.ChevronDown), { ssr: false });
+const ChevronUpIcon = dynamic(() => import("lucide-react").then(mod => mod.ChevronUp), { ssr: false });
 
-  const menuItems = [
-    { title: "Dashboard", icon: Home, href: "/seller/dashboard" },
-    {
-      title: "Companies",
-      icon: Building2,
-      href: "#", // Use '#' as a placeholder for the main link if it's just a toggle
-      onClick: () => setIsCompaniesSubMenuOpen(!isCompaniesSubMenuOpen),
-      subMenu: [
-        { title: "Basic Information", href: "/seller/companies/company-details?tab=company" },
-        { title: "Documentation", href: "/seller/companies/company-details?tab=documents" },
-      ],
-    },
-  ];
+// Menu data (static)
+const menuItems = [
+  { title: "Dashboard", icon: HomeIcon, href: "/seller/dashboard" },
+  // {
+  //   title: "Companies",
+  //   icon: Building2Icon,
+  //   href: "#", // toggle only
+  //   subMenu: [
+  //     {
+  //       title: "Basic Information",
+  //       href: "/seller/companies/company-details?tab=company",
+  //     },
+  //     {
+  //       title: "Documentation",
+  //       href: "/seller/companies/company-details?tab=documents",
+  //     },
+  //   ],
+  // },
+  {
+    title: "Companies",
+    icon: Building2Icon,
+    href: "/seller/companies",
+  },
+];
+
+function Sidebar() {
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const toggleMenu = (index) => {
+    setOpenMenu(openMenu === index ? null : index);
+  };
 
   return (
     <aside className="bg-gray-800 text-white w-64 min-h-screen fixed left-0 top-0 z-40">
@@ -34,21 +50,23 @@ const Sidebar = () => {
               <li key={index}>
                 <Link
                   href={item.href}
-                  onClick={item.onClick}
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-700 transition-colors"
+                  onClick={item.subMenu ? () => toggleMenu(index) : undefined}
+                  className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-700 transition-colors text-left"
                 >
                   <div className="flex items-center space-x-3">
                     <item.icon />
                     <span>{item.title}</span>
                   </div>
                   {item.subMenu &&
-                    (isCompaniesSubMenuOpen ? (
-                      <ChevronUp size={16} />
+                    (openMenu === index ? (
+                      <ChevronUpIcon size={16} />
                     ) : (
-                      <ChevronDown size={16} />
+                      <ChevronDownIcon size={16} />
                     ))}
                 </Link>
-                {item.subMenu && isCompaniesSubMenuOpen && (
+
+                {/* Submenu */}
+                {item.subMenu && openMenu === index && (
                   <ul className="ml-8 mt-2 space-y-2">
                     {item.subMenu.map((subItem, subIndex) => (
                       <li key={subIndex}>
@@ -69,6 +87,6 @@ const Sidebar = () => {
       </div>
     </aside>
   );
-};
+}
 
-export default Sidebar;
+export default memo(Sidebar);

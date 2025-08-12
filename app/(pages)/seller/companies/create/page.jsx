@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { createCompany } from "./action";
 import ToastComponent from "@/components/ToastComponent";
 
 export default function CreateCompanyPage() {

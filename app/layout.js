@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from '@/redux/ReduxProvider';
 import AuthProviders from '@/app/Next-auth-provider';
+import 'flag-icons/css/flag-icons.min.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Deale Admin",
-  description: "Deale Admin Panel",
+  title: "Expertalia Admin",
+  description: "Expertalia Admin Panel",
 };
 
 export default function RootLayout({ children }) {

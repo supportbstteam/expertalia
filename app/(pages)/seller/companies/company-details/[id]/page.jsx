@@ -1,18 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useCallback, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCompanyInfoTab } from "@/redux/uiSlice";
-import { useSearchParams } from "next/navigation";
-import BasicInfo from "./BasicInfo";
-import ProfitAndLoss from "./ProfitAndLoss";
-import BalanceSheet from "./BalanceSheet";
-import BusinessPlan from "./BusinessPlan";
-import SPC from "./SPC";
-import AdditionalDocuments from "./AdditionalDocuments";
+import { useParams, useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 
-export default function CompanyDetailsCard() {
-  const activeTab = useSelector((state) => state.ui.companyInfoTab);
+// Dynamic imports for better load performance
+const BasicInfo = dynamic(() => import("./BasicInfo"), { ssr: false });
+const ProfitAndLoss = dynamic(() => import("./ProfitAndLoss"), { ssr: false });
+const BalanceSheet = dynamic(() => import("./BalanceSheet"), { ssr: false });
+const BusinessPlan = dynamic(() => import("./BusinessPlan"), { ssr: false });
+const SPC = dynamic(() => import("./SPC"), { ssr: false });
+const AdditionalDocuments = dynamic(() => import("./AdditionalDocuments"), { ssr: false });
+
+function TabInitializer() {
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "company";
@@ -21,36 +23,47 @@ export default function CompanyDetailsCard() {
     dispatch(setCompanyInfoTab(tab));
   }, [dispatch, tab]);
 
-  console.log(activeTab);
+  return null; // just sets the tab, no UI
+}
 
-  const renderTabContent = () => {
+export default function CompanyDetailsCard() {
+  const params = useParams();
+  const id = params.id;
+  const activeTab = useSelector((state) => state.ui.companyInfoTab);
+  const dispatch = useDispatch();
+
+  const renderTabContent = useCallback(() => {
     switch (activeTab) {
       case "company":
         return (
           <>
-            <BasicInfo />
-            <ProfitAndLoss />
-            <BalanceSheet />
-            <BusinessPlan />
-            <SPC />
+            <BasicInfo companyId={id} />
+            <ProfitAndLoss companyId={id} />
+            <BalanceSheet companyId={id} />
+            <BusinessPlan companyId={id} />
+            <SPC companyId={id} />
           </>
         );
       case "transaction":
         return (
           <div className="p-6 rounded-xl shadow-sm bg-white mb-6 text-gray-700">
-            {/* Replace this with actual Transaction Information component */}
             <p>Transaction information goes here.</p>
           </div>
         );
       case "documents":
-        return <AdditionalDocuments />;
+        return <AdditionalDocuments companyId={id} />;
       default:
         return null;
     }
-  };
+  }, [activeTab, id]);
 
   return (
     <>
+      {/* Suspense boundary for reading search params */}
+      <Suspense fallback={null}>
+        <TabInitializer companyId={id} />
+      </Suspense>
+
       <section className="p-6 rounded-xl shadow-sm bg-white mb-6">
         {/* Info Banner */}
         <div className="bg-yellow-100 border border-yellow-200 rounded-md p-4 text-sm text-yellow-800 flex justify-between items-center mb-6">

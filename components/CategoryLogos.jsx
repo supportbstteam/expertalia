@@ -1,10 +1,15 @@
 import Image from "next/image";
+import { cookies } from "next/headers";
+import { getMessages } from "@/lib/getMessages";
 
 export default function CategoryLogos() {
+  const cookieStore = cookies();
+  const lang = cookieStore.get("lang")?.value;
+  const t = getMessages(lang);
   return (
     <section className="bg-white py-10 px-4 text-center">
       <p className="text-gray-500 text-lg mb-6">
-        Join 2000+ companies and advisors using our platform.
+        { t.s11 }
       </p>
       <div className="flex flex-wrap justify-center gap-20 text-gray-400 text-sm">
         <div className="flex items-center gap-2">

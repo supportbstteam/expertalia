@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCompanyId } from "@/redux/companySlice";
 
-export default function BasicInfo() {
+export default function BasicInfo({ companyId }) {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true); // loading state
@@ -26,11 +26,10 @@ export default function BasicInfo() {
   useEffect(() => {
     const fetchCompanyData = async () => {
       try {
-        const response = await fetch("/api/company/basic-info");
+        const response = await fetch(`/api/company/basic-info/${companyId}`);
         const data = await response.json();
         if (data.company) {
           dispatch(setCompanyId(data.company._id));
-          // localStorage.setItem("companyId", data.company._id);
           setCompanyData(data.company);
         }
       } catch (err) {
@@ -40,7 +39,8 @@ export default function BasicInfo() {
       }
     };
     fetchCompanyData();
-  }, []);
+  }, [companyId]);
+
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
