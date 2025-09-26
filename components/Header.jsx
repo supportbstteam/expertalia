@@ -28,7 +28,7 @@ export default function Header() {
       window.removeEventListener("storage", updateLang);
     };
   }, []);
-
+ 
   const navLinks = [
     { href: "/", label: t.home },
     { href: "/buy-sell-company", label: t.buyandsale },
