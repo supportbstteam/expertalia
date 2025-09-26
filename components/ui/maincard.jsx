@@ -16,7 +16,7 @@ export default function Maincard({
         <div className="bg-[#052766] text-white p-4 rounded-full flex ">
           {icon}
         </div>
-        <h3 className="font-semibold text-[#052766] text-2xl">{title}</h3>
+        <h3 className="font-semibold text-[#052766] text-2xl text-start">{title}</h3>
       </div>
 
       {/* Items */}
