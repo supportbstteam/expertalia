@@ -10,7 +10,7 @@ export default function Maincard({
   mainbuttonlink,
 }) {
   return (
-    <div className="bg-blue-50 rounded-lg shadow-sm py-6 px-5 flex flex-col h-full">
+    <div className="bg-blue-50 rounded-lg  py-6 px-5 flex flex-col h-full">
       {/* Icon + Title */}
       <div className="flex items-center gap-3 mb-10">
         <div className="bg-[#052766] text-white p-4 rounded-full flex ">
@@ -26,7 +26,7 @@ export default function Maincard({
             items.map((item, idx) => (
               <li
                 key={idx}
-                className="flex justify-between items-center bg-white rounded-md p-4 border hover:shadow-sm transition cursor-pointer"
+                className="flex justify-between items-center bg-white rounded-md p-4 border hover:bg-[#f1f1f1] transition cursor-pointer"
                 onClick={onButtonClick}
               >
                 <span className="text-[#052766]">{item}</span>
@@ -35,7 +35,7 @@ export default function Maincard({
             ))
           ) : (
             <li
-              className="flex justify-between items-start bg-white rounded-md p-4 border hover:shadow-sm transition cursor-pointer"
+              className="flex justify-between items-start bg-white rounded-md p-4 border hover:bg-[#f1f1f1] transition cursor-pointer"
               onClick={onButtonClick}
             >
               <div className="flex flex-col text-[#052766] text-left">
