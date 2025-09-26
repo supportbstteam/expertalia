@@ -14,7 +14,7 @@ export default function Commoncard({
     <div className="border bg-white rounded-xl p-6 shadow-sm flex flex-col justify-between h-full">
       <div className={ center ? "flex flex-col items-center text-center" : "" }>
         {/* Icon */}
-        <div className={size === 'full' ? "w-20 h-20 rounded-full bg-[#052766] flex items-center justify-center mb-8" : "w-15 h-15 rounded-full bg-[#052766] flex items-center justify-center mb-6" }>
+        <div className={size === 'full' ? "w-15 h-15 rounded-full bg-[#052766] flex items-center justify-center mb-8" : "w-15 h-15 rounded-full bg-[#052766] flex items-center justify-center mb-6" }>
           {icon}
         </div>
 
