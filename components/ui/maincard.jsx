@@ -21,12 +21,12 @@ export default function Maincard({
 
       {/* Items */}
       <div className="flex-1">
-        <ul className="space-y-3 h-full">
+        <ul className="space-y-3">
           {Array.isArray(items) ? (
             items.map((item, idx) => (
               <li
                 key={idx}
-                className="flex justify-between items-center bg-white rounded-md p-4 border hover:bg-[#f1f1f1] transition cursor-pointer h-full"
+                className="flex justify-between items-center bg-white rounded-md p-4 border hover:bg-[#f1f1f1] transition cursor-pointer"
                 onClick={onButtonClick}
               >
                 <span className="text-[#052766]">{item}</span>
