@@ -40,7 +40,7 @@ export default function Section6() {
         {stories.map((story, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden transition hover:shadow-md relative flex-shrink-0 w-90 snap-start"
+            className="bg-white border border-gray-200 rounded-2xl  overflow-hidden transition  relative flex-shrink-0 w-90 snap-start"
           >
             <div className="w-full h-[180px] relative">
               <Image
