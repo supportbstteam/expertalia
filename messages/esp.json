@@ -1,6 +1,12 @@
 {
   "login": "Acceder a tu cuenta",
   "investors": "Inversores",
+  "home": "casa",
+  "consulting":"Consultoría",
+  "outsourcefinancial":"Externalizar el departamento financiero",
+  "Aboutus":"Acerca de nosotros",
+  "blog":"Blog",
+  "buyandsale" :"Comprar y Vender Empresas",
   "companies": "Empresas",
   "advisors": "Asesores",
   "resource": "Recursos",
@@ -56,31 +62,368 @@
   "s48": "Una startup SaaS de tamaño medio logró ser adquirida en 45 días a través de nuestra red de inversores, lo que permitió una rápida expansión en el mercado y el crecimiento del equipo.",
   "s49": "Salida de Marca de Moda",
   "s50": "Una marca de moda D2C logró una salida exitosa con una valoración 2.3x al destacar su fuerte lealtad de marca y operaciones optimizadas.",
-  "s51": "Adquisición de Plataforma de Salud",
-  "s52": "Nuestros asesores expertos facilitaron la adquisición de una plataforma de telemedicina en rápido crecimiento, permitiendo la expansión del servicio a nivel nacional y la integración operativa en 60 días.",
+  "s51": "Adquisición de atención médica",
+  "s52": "Nuestros asesores expertos facilitaron la adquisición de una plataforma de telesalud de rápido crecimiento, lo que permitió a nivel nacional",
+  "sne51": "El futuro de los mercados",
+  "sne52": "Cómo las plataformas digitales están transformando la forma en que se compran y venden empresas.",
   "s53": "Avenida República Argentina,",
   "s54": "26 Puerta E 41011 Sevilla",
-  "s55": "Teléfono: 955 190 908",
+  "s55": "955 190 908",
   "s56": "info@example.com",
-  "s57": "Usuario",
-  "s58": "Para Empresas",
-  "s59": "Para Inversores",
-  "s60": "Para Asesores",
-  "s61": "Términos de Servicio",
+  "s57": "Enlaces Rápidos",
+  "s58": "Compra y venta de empresas",
+  "s59": "Servicios de consultoría",
+  "s60": "Subcontratar soluciones",
+  "s61": "Registro de vendedor",
   "s62": "Política de Privacidad",
-  "s63": "Inicio",
-  "s64": "Cómo Funciona",
-  "s65": "Mercado",
-  "s66": "Contáctenos",
+  "s63": "Consultoría Fiscal",
+  "s64": "Consultoría Laboral",
+  "s65": "Servicios de contabilidad",
+  "s66": "Valoración Empresarial",
   "s67": "Política de Cookies",
   "s68": "LinkedIn",
   "s69": "Twitter",
   "s70": "Facebook",
   "s71": "Whatsapp",
   "s72": "Programa de Afiliados",
-  "s73": "Información",
-  "s74": "Conéctese con nosotros",
+  "s73": "Nuestro Servicio",
+  "s74": "Otro enlace",
+  "snlega1" : "Aviso Legal",
   "s75": "Mantengámonos en contacto",
   "s76": "Correo electrónico",
-  "s77": "Ver historias"
+  "s77": "Leer más",
+  "scontact": "Contacto",
+  "sn51": "Acuerdo estratégico liderado por asesores",
+  "sn52": "Uno de nuestros asesores expertos guió a una plataforma EdTech para reestructurar sus finanzas, atrayendo compradores premium y cerrando por encima del precio solicitado.",
+  "ourservice": {
+    "heading": "Plataforma de Compra y Venta de Empresas, Asesores Fiscales y Financieros",
+    "subtext": "Te ayudamos a crecer y alcanzar tus objetivos de manera controlada con más de 20 años de experiencia",
+    "services": {
+      "buyandsell": {
+        "title": "Comprar y Vender Empresas",
+        "items1" : "Vende tu Empresa/Negocio",
+        "items2" : "Compra una Empresa/Negocio",
+        "button": "Valora tu empresa gratis"
+      },
+      "consulting": {
+        "title": "Consultoría",
+        "items1": "Fiscal",
+        "items2": "Laboral",
+        "items3":  "Contabilidad",
+        "button": "Solicita tu presupuesto"
+      },
+      "outsource": {
+        "title": "Externalizar el Departamento Financiero",
+        "items1": "Departamento de Administración" ,
+         "items2": "CFO",
+        "button": "Solicita tu presupuesto"
+      }
+    }
+  },
+  "trustedbg":"Confiado en líderes de la industria",
+  "businessform": {
+    "heading": "Comienza hoy tu camino empresarial",
+    "subtext": "Comparte tus requisitos y te conectaremos con las oportunidades adecuadas.",
+    "firstname": "Nombre",
+    "firstname_placeholder": "Nombre",
+    "lastname": "Apellido",
+    "lastname_placeholder": "Apellido",
+    "email": "Correo electrónico",
+    "email_placeholder": "Introduce tu correo electrónico",
+    "phone": "Teléfono",
+    "phone_placeholder": "Introduce tu número de teléfono",
+    "role_label": "Quiero",
+    "role_seller": "Vender tu empresa/negocio",
+    "role_buyer": "Comprar una empresa/negocio",
+    "value_button": "Valora tu empresa gratis",
+    "next": "Siguiente",
+    "industry": "Elige industria",
+    "industry_placeholder": "Elige industria",
+    "size": "Tamaño del negocio",
+    "size_placeholder": "Número de empleados",
+    "budget": "Presupuesto de inversión",
+    "budget_placeholder": "Introduce el presupuesto",
+    "timeline": "Tiempo para adquisición",
+    "timeline_placeholder": "Introduce el plazo",
+    "additional": "Información adicional (opcional)",
+    "additional_placeholder": "Información adicional (opcional)",
+    "back": "Atrás",
+    "submit": "Enviar"
+  },
+   "opportunities": {
+    "heading": "Empresas listas para la adquisición",
+    "subtext": "Descubra negocios verificados en diferentes industrias, listos para ser adquiridos hoy.",
+    "companies": [
+      {
+        "name": "PureGlow Organics",
+        "industry": "Comercio electrónico",
+        "location": "Rosario, AR",
+        "status": "Rentable",
+        "sales": "$900K",
+        "ebitda": "€1.3M",
+        "employees": 45,
+        "description": "Marca de cuidado de la piel directa al consumidor con una base de clientes leales y fuerte presencia en redes sociales."
+      },
+      {
+        "name": "Mendoza Digital",
+        "industry": "Marketing",
+        "location": "Mendoza, AR",
+        "status": "Rentable",
+        "sales": "$750K",
+        "ebitda": "€3.3M",
+        "employees": 45,
+        "description": "Agencia de marketing digital de servicio completo que ayuda a las empresas locales a crecer su presencia en línea."
+      },
+      {
+        "name": "GreenTech",
+        "industry": "Energía renovable",
+        "location": "Austin, TX",
+        "status": "Rentable",
+        "sales": "$900K",
+        "ebitda": "$1.1M",
+        "employees": 45,
+        "description": "Proveedor regional de instalación y mantenimiento de paneles solares con más de 150 clientes corporativos."
+      },
+      {
+        "name": "Santa Fe Logistics",
+        "industry": "Logística",
+        "location": "Santa Fe, AR",
+        "status": "Rentable",
+        "sales": "$850K",
+        "ebitda": "$900K",
+        "employees": 50,
+        "description": "Soluciones regionales de cadena de suministro logístico y manufactura."
+      },
+      {
+        "name": "BlueWave",
+        "industry": "Energía renovable",
+        "location": "Austin, TX",
+        "status": "Rentable",
+        "sales": "$900K",
+        "ebitda": "$1.1M",
+        "employees": 45,
+        "description": "Proveedor regional de instalación y mantenimiento de paneles solares con más de 150 clientes corporativos."
+      }
+    ]
+  },
+  "labels": {
+    "sales": "Ventas",
+    "ebitda": "EBITDA",
+    "employees": "Número de empleados",
+    "viewOpportunity": "Ver Oportunidad"
+  },
+  "buysell": {
+    "badge": "Compra y Venta de Empresas",
+    "heading": "Su Socio en el Crecimiento y Transición Empresarial",
+    "subtext": "Trabajamos junto a organizaciones locales y globales líderes en diversos sectores, combinando experiencia, recursos e innovación para ofrecer excelencia en cada proyecto.",
+    "sell": {
+      "title": "VENDE tu empresa/negocio",
+      "description": "Encuentra al comprador adecuado para tu empresa, asegura el mejor trato y maximiza el valor de tu salida con orientación experta durante todo el proceso.",
+      "button": "Comenzar"
+    },
+    "buy": {
+      "title": "COMPRA una empresa/negocio",
+      "description": "Explora una amplia gama de oportunidades verificadas en múltiples industrias, evalúa negocios con confianza y toma decisiones de inversión informadas con el respaldo de información confiable.",
+      "button": "Comprar Ahora"
+    },
+    "valuation": {
+      "title": "Valora tu empresa gratis",
+      "description": "Accede a nuestra herramienta de valoración instantánea basada en datos para descubrir el verdadero valor de tu empresa y tomar decisiones más inteligentes, ya sea que planees vender, crecer o reestructurar.",
+      "button": "Iniciar Valoración"
+    }
+  },
+  "consultingtext": {
+      "badge": "Consultoría",
+      "heading": "Consultoría experta para decisiones empresariales más inteligentes",
+      "subtext":
+        "Desde asesoría fiscal y laboral hasta contabilidad y análisis financiero, nuestros servicios de consultoría brindan la claridad y el cumplimiento que su empresa necesita para crecer con confianza y sostenibilidad.",
+      "tax": {
+        "title": "Impuestos",
+        "description":
+          "Planificación fiscal integral, cumplimiento y servicios de optimización diseñados para minimizar riesgos, reducir responsabilidades y maximizar la eficiencia.",
+        "button": "Explorar más"
+      },
+      "labor": {
+        "title": "Laboral",
+        "description":
+          "Gestión integral de la fuerza laboral y asesoría en derecho laboral. Desde contratos de empleados hasta cumplimiento con normativas laborales.",
+        "button": "Explorar más"
+      },
+      "accounting": {
+        "title": "Contabilidad",
+        "description":
+          "Contabilidad precisa, informes transparentes y análisis financiero detallado. Nuestros expertos brindan información práctica para el crecimiento de su empresa.",
+        "button": "Explorar más"
+      }
+    },
+    "outsource": {
+  "badge": "Departamento Financiero Externalizado",
+  "heading": "Externaliza tu Departamento Financiero con Confianza",
+  "subtext": "Desde la administración financiera diaria hasta la orientación estratégica de un CFO, obtén soporte experto sin los costos de contratación a tiempo completo — adaptado a las necesidades de tu negocio.",
+  "administration": {
+    "title": "Departamento de Administración",
+    "description": "Delegue sus tareas diarias de administración financiera a profesionales experimentados, garantizando precisión y eficiencia mientras usted se concentra en el crecimiento del negocio.",
+    "button": "Solicita tu Cotización"
+  },
+  "cfo": {
+    "title": "Director Financiero (CFO)",
+    "description": "Accede a estrategias e información financiera de alto nivel con nuestros servicios de CFO externalizado — obtén la experiencia de un CFO sin el compromiso de una contratación a tiempo completo.",
+    "button": "Solicita tu Cotización"
+  }
+},
+"footer": {
+  "about" : "Su socio de confianza para servicios empresariales, conectando vendedores y brindando soluciones expertas para compra, venta, consultoría y subcontratación."
+},
+"copyright": "© 2025 expertaliaasesores. Todos los derechos reservados.",
+"banner": {
+  "heading": {
+        "highlight": "Comprar y Vender Empresas",
+        "rest": "con Confianza, Claridad y Máximo Valor"
+      },
+      "button": "Solicita tu Cotización"
+},
+"banner2": {
+ "heading": {
+        "rest1": "Experta",
+        "highlight": "Consultante",
+        "rest": "Para impulsar su negocio hacia adelante"
+      },
+      "button": "Solicita tu cotización"
+},
+"buy_sellcompany": {
+  "badge": "Vende tu Empresa/Negocio",
+  "title": "Vender tu Empresa Nunca Fue Tan Fácil",
+  "title2": "Aprovecha Oportunidades de Crecimiento con la Adquisición Correcta",
+  "description": "Convertir años de esfuerzo en la salida adecuada no debería ser complicado. Ayudamos a los dueños de negocios a vender sus empresas con transparencia, asesoría de confianza y el mejor acuerdo posible para su futuro.",
+  "description2": "Encontrar el negocio adecuado para invertir no debería ser complicado. Te conectamos con oportunidades verificadas, información confiable y asesoría experta para que tomes decisiones seguras para tu crecimiento futuro.",
+  "benefit1": "Maximiza el Valor de tu Empresa",
+  "benefit1_2": "Accede a Negocios Verificados",
+  "benefit2": "Apoyo de Confianza",
+  "benefit2_2": "Información Confiable del Mercado",
+  "benefit3": "Acceso a Compradores Serios",
+  "benefit3_2": "Transacciones Seguras",
+  "benefit4": "Proceso sin Complicaciones",
+  "benefit4_2": "Proceso de Compra sin Complicaciones",
+  "record1": "Empresas listadas con nosotros",
+  "record1_2": "Negocios verificados listados para compradores",
+  "record2": "Cierres de acuerdos exitosos",
+  "record2_2": "Adquisiciones exitosas cerradas",
+  "button": "Vender mi Empresa",
+  "button2": "Comprar una Empresa",
+  "imagecrdtitle": "Valora tu empresa gratis",
+  "imagecrddesc": "Desde la valoración hasta el acuerdo final, te guiamos en cada paso. Con experiencia confiable y una red de compradores serios, vender tu negocio se vuelve más fácil que nunca."
+},
+"trustcard_title1": "5,000+",
+"trustcard_desc1": "Ventas de negocios exitosas",
+"trustcard_title2": "92%",
+"trustcard_desc2": "Tasa de satisfacción del cliente",
+"trustcard_title3": "1B USD",
+"trustcard_desc3": "Valor total de acuerdos cerrados",
+  "consulting_page": {
+    "Advice": {
+      "badge": "Servicios de Asesoría Fiscal",
+      "title": "Servicios Expertos de Asesoría Fiscal",
+      "description": "Proporcionamos soluciones estratégicas de asesoría fiscal para empresas e individuos, ayudándote a mantener el cumplimiento normativo mientras optimizas tus resultados fiscales. Con años de experiencia, simplificamos el complejo mundo de la tributación para que puedas centrarte en el crecimiento y la tranquilidad.",
+      "benefit1": "Soluciones fiscales con cumplimiento y confianza.",
+      "benefit2": "Soporte fiscal confiable para empresas e individuos."
+    },
+    "Labor": {
+      "badge": "Servicios de Asesoría Laboral",
+      "title": "Soluciones Laborales Confiables",
+      "description": "Ofrecemos servicios expertos de asesoría laboral para ayudar a las empresas a gestionar los desafíos de la fuerza laboral con confianza. Desde contratos y cumplimiento hasta regulaciones laborales, garantizamos que tu empresa opere sin problemas mientras protegemos los intereses tanto del empleador como del empleado.",
+      "benefit1": "Orientación sobre leyes laborales y cumplimiento",
+      "benefit2": "Preparación de nóminas y solicitudes de embargos"
+    },
+    "Accounting": {
+      "badge": "Servicios Contables",
+      "title": "Soluciones Contables Fiables",
+      "description": "Proporcionamos servicios contables de principio a fin para empresas e individuos, asegurando precisión financiera, claridad y transparencia. Desde la contabilidad hasta los informes financieros, nuestro equipo te ayuda a mantenerte organizado y tomar decisiones informadas con confianza.",
+      "benefit1": "Contabilidad precisa y gestión de registros",
+      "benefit2": "Soporte contable transparente y conforme a la normativa"
+    },
+    "form": {
+      "title": "Obtén una Estimación Instantánea para las Necesidades de Tu Empresa",
+      "description": "Usa nuestra calculadora inteligente para obtener un presupuesto personalizado en minutos. Comparte tus datos y nuestros consultores se comunicarán contigo con asesoramiento adaptado.",
+      "form_heading": "Calculadora de Presupuesto",
+      "form_subtext": "Obtén tu presupuesto personalizado y conecta con nuestros expertos",
+      "firstname": "Nombre",
+      "firstname_placeholder": "Nombre",
+      "email": "Correo Electrónico",
+      "email_placeholder": "ejemplo@mail.com",
+      "phone": "Teléfono",
+      "phone_placeholder": "Ingresa tu número de contacto",
+      "Company": "Empresa",
+      "Company_placeholder": "Ingresa el nombre de tu empresa",
+      "service": "Tipo de Servicio",
+      "service_placeholder": "Selecciona Tipo de Servicio",
+      "companysize": "Tamaño de la Empresa",
+      "companysize_placeholder": "Número de Empleados",
+      "billing": "Facturación Estimada",
+      "billing_placeholder": "Selecciona Facturación Estimada",
+      "timeline": "Plazo Preferido",
+      "timeline_placeholder": "Selecciona Plazo",
+      "button": "Calcular Mi Presupuesto"
+    }
+  },
+  "outsource_page": {
+  "banner": {
+    "heading": {
+      "highlight": "Externaliza el Departamento Financiero ",
+      "rest": "a Profesionales de Confianza"
+    },
+    "button": "Solicita tu Cotización"
+  },
+  "adminstration": {
+    "badge": "Departamento de Administración",
+    "title": "Servicios de Asesoría Fiscal Experta",
+    "description": "Ofrecemos soluciones estratégicas de asesoría fiscal para empresas y particulares, ayudándote a mantener el cumplimiento normativo mientras optimizas tus resultados fiscales.",
+    "subdescription": "La gestión administrativa es más que papeleo: se trata de mantener tu empresa eficiente, en cumplimiento y libre de estrés. Nuestros expertos se encargan de la documentación, los reportes y los procesos organizativos con precisión, asegurando operaciones fluidas cada día.",
+    "benefit1": "Informes simplificados y registro contable",
+    "benefit2": "Gestión eficiente de contratos y documentación"
+  },
+  "cfo": {
+    "badge": "Director Financiero (CFO)",
+    "title": "Servicios Estratégicos de CFO para Decisiones más Inteligentes",
+    "description": "Nuestros servicios de CFO van más allá de la contabilidad. Proporcionamos información, planificación financiera y estrategias basadas en datos que te permiten tomar decisiones empresariales informadas. Desde la elaboración de presupuestos hasta la previsión, nos aseguramos de que tu empresa esté en camino hacia un éxito sostenible.",
+    "benefit1": "Gestión de flujo de caja y previsiones",
+    "benefit2": "Asesoramiento personalizado para empresas de todos los tamaños"
+  }
+},
+"contact": {
+  "badge": "Contáctanos",
+  "title": "Trabajemos Juntos",
+  "description": "¡Nos encantaría saber de ti! Contáctanos a través del formulario, WhatsApp o correo electrónico — nuestro equipo responderá rápidamente.",
+  "address": "Avenida República Argentina, 26 Puerta E 41011 Sevilla",
+  "email": "Support@expertaliaasesores.es",
+  "phone": "955-190-908",
+  "whatsapp": "676 435 804",
+  "form": {
+    "firstname": "Nombre",
+    "firstname_placeholder": "Ingresa tu nombre",
+    "lastName": "Apellido",
+    "lastname_placeholder": "Ingresa tu apellido",
+    "email": "Correo electrónico",
+    "email_placeholder": "Ingresa tu correo",
+    "phone": "Teléfono",
+    "phone_placeholder": "Ingresa tu número de teléfono",
+    "wanttext": "¿Qué estás buscando?",
+    "howcanwehelp": "¿Cómo podemos ayudarte?",
+    "button": "Enviar Mensaje",
+    "queries": {
+      "buySell": "Compra y Venta de Empresas",
+      "consulting": "Consultoría",
+      "outsource": "Externalizar Departamento Financiero",
+      "other": "Otras Consultas"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+  
 }

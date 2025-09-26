@@ -1,6 +1,12 @@
 {
   "login": "Access your Account",
   "investors": "Investors",
+  "home":"Home",
+  "consulting":"Consulting",
+  "outsourcefinancial":"Outsource Financial Dept",
+  "Aboutus":"About us",
+  "blog":"Blog",
+  "buyandsale":"Buy & Sell Companies",
   "companies": "Companies",
   "advisors": "Advisors",
   "resource": "Resource",
@@ -56,31 +62,367 @@
   "s48": "A mid-size SaaS startup secured acquisition within 45 days through our investor network, enabling rapid market expansion and team growth.",
   "s49": "Fashion Brand Exit",
   "s50": "A D2C fashion brand achieved a successful exit at 2.3x valuation by positioning its strong brand loyalty and streamlined operations.",
-  "s51": "Healthcare Platform Acquisition",
-  "s52": "Our expert advisors facilitated the acquisition of a fast-growing telehealth platform, enabling nationwide service expansion and operational integration within 60 days.",
+  "s51": "Healthcare Acquisition",
+  "s52": "Our expert advisors facilitated the acquisition of a fast-growing telehealth platform, enabling nationwid",
+  "sne51": "Future of Marketplaces",
+  "sne52": "How digital platforms are transforming the way companies are bought and sold.",
   "s53": "Avenida República Argentina,",
   "s54": "26 Puerta E 41011 Sevilla",
-  "s55": "Telephone: 955 190 908",
+  "s55": "955 190 908",
   "s56": "info@example.com",
-  "s57": "User",
-  "s58": "For Company",
-  "s59": "For Investors",
-  "s60": "For Advisors",
-  "s61": "Terms of Service",
+  "s57": "Quick Likns",
+  "s58": "Buying & Selling Companies",
+  "s59": "Consulting Services",
+  "s60": "Outsource Solutions",
+  "s61": "Salesperson Registration",
   "s62": "Privacy Policy",
-  "s63": "Home",
-  "s64": "How It Works",
-  "s65": "Marketplace",
-  "s66": "Contact Us",
+  "snlega1" : "Legal Notice",
+  "s63": "Tax Consulting",
+  "s64": "Labor Consulting",
+  "s65": "Accounting Services",
+  "s66": "Business Valuation",
   "s67": "Cookies Policy",
   "s68": "LinkedIn",
   "s69": "Twitter",
   "s70": "Facebook",
   "s71": "Whatsapp",
   "s72": "Affiliate Program",
-  "s73": "Information",
-  "s74": "Connect With Us",
+  "s73": "Our Service",
+  "s74": "Other Link",
   "s75": "Let’s keep in touch",
   "s76": "Email Id",
-  "s77": "View Stories"
+  "s77": "Read More",
+  "scontact": "Contact",
+  "sn51": "Advisor-led Strategic Deal",
+  "sn52": "One of our expert advisors guided an EdTech platform to restructure financials, attracting premium buyers and closing above asking price.",
+  "ourservice": {
+    "heading": "Business Buy & Sell Platform, Tax and Financial Advisors",
+    "subtext": "We help you grow and achieve your goals in a controlled way with more than 20 years of experience",
+    "services": {
+      "buyandsell": {
+        "title": "Buy & Sell Companies",
+        "items1": "Sell Your Company/Business",
+        "items2": "Buy a Company/Business",
+        "button": "Value your company for free"
+      },
+      "consulting": {
+        "title": "Consulting",
+        "items1": "Tax",
+        "items2": "Labour",
+        "items3": "Accounting",
+        "button": "Request your Quote"
+      },
+      "outsource": {
+        "title": "Outsource Financial Dept.",
+        "items1": "Administration Dept",
+        "items2": "CFO",
+        "button": "Request your Quote"
+      }
+    }
+  },
+  "trustedbg" : "Trusted by Industry Leaders",
+  "businessform": {
+    "heading": "Start Your Business Journey Today",
+    "subtext": "Share your requirements, and we’ll match you with the right opportunities.",
+    "firstname": "First Name",
+    "firstname_placeholder": "First Name",
+    "lastname": "Last Name",
+    "lastname_placeholder": "Last Name",
+    "email": "Email",
+    "email_placeholder": "Enter your Email Id",
+    "phone": "Phone",
+    "phone_placeholder": "Enter your Phone No",
+    "role_label": "I want to",
+    "role_seller": "Sell Your Company/Business",
+    "role_buyer": "Buy a Company/Business",
+    "value_button": "Value your company for free",
+    "next": "Next",
+    "industry": "Choose Industry",
+    "industry_placeholder": "Choose Industry",
+    "size": "Business Size",
+    "size_placeholder": "No. of employee",
+    "budget": "Investment Budget",
+    "budget_placeholder": "Enter Budget",
+    "timeline": "Acquisition Timeline",
+    "timeline_placeholder": "Enter Timeline",
+    "additional": "Additional Info (optional)",
+    "additional_placeholder": "Additional Info (optional)",
+    "back": "Back",
+    "submit": "Submit"
+  },
+  "opportunities": {
+    "heading": "Companies Ready for Acquisition",
+    "subtext": "Discover vetted businesses across industries, ready for acquisition today.",
+    "companies": [
+      {
+        "name": "PureGlow Organics",
+        "industry": "E-commerce",
+        "location": "Rosario, AR",
+        "status": "Profitable",
+        "sales": "$900K",
+        "ebitda": "€1.3M",
+        "employees": 45,
+        "description": "Direct-to-consumer skincare brand with a loyal customer base and strong social media presence."
+      },
+      {
+        "name": "Mendoza Digital",
+        "industry": "Marketing",
+        "location": "Mendoza, AR",
+        "status": "Profitable",
+        "sales": "$750K",
+        "ebitda": "€3.3M",
+        "employees": 45,
+        "description": "Full-service digital marketing agency helping local businesses grow their online presence."
+      },
+      {
+        "name": "GreenTech",
+        "industry": "Renewable Energy",
+        "location": "Austin, TX",
+        "status": "Profitable",
+        "sales": "$900K",
+        "ebitda": "$1.1M",
+        "employees": 45,
+        "description": "Regional solar panel installation and maintenance provider with 150+ corporate clients."
+      },
+      {
+        "name": "Santa Fe Logistics",
+        "industry": "Logistics",
+        "location": "Santa Fe, AR",
+        "status": "Profitable",
+        "sales": "$850K",
+        "ebitda": "$900K",
+        "employees": 50,
+        "description": "Regional logistics supply chain solutions and manufacturing."
+      },
+      {
+        "name": "BlueWave",
+        "industry": "Renewable Energy",
+        "location": "Austin, TX",
+        "status": "Profitable",
+        "sales": "$900K",
+        "ebitda": "$1.1M",
+        "employees": 45,
+        "description": "Regional solar panel installation and maintenance provider with 150+ corporate clients."
+      }
+    ]
+  },
+  "labels": {
+    "sales": "Sales",
+    "ebitda": "EBITDA",
+    "employees": "No of Employees",
+    "viewOpportunity": "View Opportunity"
+  },
+  "buysell": {
+    "badge": "Buy & Sell Companies",
+    "heading": "Your Partner in Business Growth & Transition",
+    "subtext": "We work alongside leading local and global organizations across various sectors, combining expertise, resources, and innovation to deliver excellence in every project.",
+    "sell": {
+      "title": "SELL your company/business",
+      "description": "Find the right buyer for your business, secure the most competitive deal, and maximize the value of your exit with expert guidance throughout the entire process.",
+      "button": "Get Started"
+    },
+    "buy": {
+      "title": "BUY a company/business",
+      "description": "Explore a wide range of verified opportunities across multiple industries, evaluate businesses with confidence, and make informed investment decisions backed by trusted insights.",
+      "button": "Buy Now"
+    },
+    "valuation": {
+      "title": "Value your company for free",
+      "description": "Access our instant, data-driven valuation tool to uncover your company's true worth, helping you make smarter decisions whether you plan to sell, grow, or restructure.",
+      "button": "Start Valuation"
+    }
+  },
+  "consultingtext": {
+      "badge": "Consulting",
+      "heading": "Expert Consulting for Smarter Business Decisions",
+      "subtext":
+        "From tax and labor advisory to accounting and financial analysis, our consulting services provide the clarity and compliance your business needs to grow confidently and sustainably.",
+      "tax": {
+        "title": "Tax",
+        "description":
+          "Comprehensive tax planning, compliance, and optimization services designed to minimize risks, reduce liabilities, and maximize efficiency.",
+        "button": "Explore More"
+      },
+      "labor": {
+        "title": "Labor",
+        "description":
+          "End-to-end workforce management and labor law advisory. From employee contracts to compliance with labor regulations.",
+        "button": "Explore More"
+      },
+      "accounting": {
+        "title": "Accounting",
+        "description":
+          "Accurate bookkeeping, transparent reporting, and in-depth financial analysis. Our experts provide actionable insights into your company’s growth.",
+        "button": "Explore More"
+      }
+    },
+  "outsource": {
+    "badge": "Outsource Financial Department",
+    "heading": "Outsource Your Finance Department with Confidence",
+    "subtext": "From everyday financial administration to strategic CFO guidance, get expert support without the overhead of full-time hiring — tailored to your business needs.",
+    "administration": {
+      "title": "Administration Department",
+      "description":
+        "Delegate your daily financial administration tasks to experienced professionals, ensuring accuracy and efficiency while you focus on business growth.",
+      "button": "Request your Quote"
+    },
+    "cfo": {
+      "title": "Chief Financial Officer (CFO)",
+      "description":
+        "Access high-level financial strategy and insights with our outsourced CFO services — get the expertise of a CFO  commitment of a full-time hire.",
+      "button": "Request your Quote"
+    }
+  },
+  "footer": {
+  "about" : "Your trusted partner for business services, connecting salespeople and providing expert solutions for buying, selling, consulting, and outsourcing."
+},
+"copyright": "© 2025 expertaliaasesores. All rights reserved.",
+"banner": {
+ "heading": {
+        "highlight": "Buy & Sell Companies",
+        "rest": "with Confidence, Clarity, and Maximum Value"
+      },
+      "button": "Request your Quote"
+},
+"banner2": {
+ "heading": {
+        "rest1": "Expert",
+        "highlight": "Consulting",
+        "rest": "to Drive Your Business Forward"
+      },
+      "button": "Request your Quote"
+},
+"buy_sellcompany": {
+  "badge": "Sell Your Company/Business",
+  "title": "Selling Your Company Has Never Been Easier",
+  "title2": "Seize Growth Opportunities Through the Right Acquisition",
+  "description": "Turning years of hard work into the right exit shouldn’t be complicated. We help business owners sell their companies with transparency, trusted guidance, and the best possible deal for your future.",
+  "description2": "Finding the right business to invest in shouldn’t be complicated. We connect you with verified opportunities, trusted insights, and expert guidance so you can make confident decisions for your future growth.",
+  "benefit1":"Maximize Your Business Value",
+  "benefit1_2":"Access Verified Businesses",
+  "benefit2":"Trusted Support",
+  "benefit2_2":"Trusted Market Insights",
+  "benefit3":"Access Serious Buyers",
+  "benefit3_2":"Secure Transactions",
+  "benefit4":"Hassle-Free Process",
+  "benefit4_2":"Hassle-Free Buying Process",
+  "record1":"Businesses listed with us",
+  "record1_2":"Verified businesses listed for buyers",
+  "record2":"Successful deal closures",
+  "record2_2":"Successful acquisitions closed",
+  "button": "Sell My Company",
+  "button2": "Buy a Company",
+  "imagecrdtitle":"Value your company for free",
+  "imagecrddesc":"From valuation to final deal, we guide you at every step. With trusted expertise and a network of serious buyers, selling your business becomes easier than ever."
+},
+"trustcard_title1": "5,000+",
+"trustcard_desc1": "Successful Business Sales",
+"trustcard_title2": "92%",
+"trustcard_desc2": "Client Satisfaction Rate",
+"trustcard_title3": "1B USD",
+"trustcard_desc3": "Total Deal Value Closed",
+"consulting_page":{
+  "Advice":{
+    "badge": "Tax Advisory Services",
+    "title": "Expert Tax Advisory Services",
+    "description": "We provide strategic tax advisory solutions to businesses and individuals, helping you stay compliant while optimizing your tax outcomes. With years of expertise, we simplify the complex world of taxation so you can focus on growth and peace of mind.",
+    "benefit1":"Tax solutions with compliance and confidence.",
+    "benefit2":"Trusted tax support for businesses and individuals."
+  },
+  "Labor":{
+    "badge": "Labour Advisory Services",
+    "title": "Trusted Labour Solutions",
+    "description": "We offer expert labour advisory services to help businesses manage workforce challenges with confidence. From contracts and compliance to workplace regulations, we ensure your company operates smoothly while protecting both employer and employee interests.",
+    "benefit1":"Guidance on labour laws and compliance",
+    "benefit2":"Preparation of payrolls and requests for garnishments"
+  },
+  "Accounting":{
+    "badge": "Accounting Services",
+    "title": "Reliable Accounting Solutions",
+    "description": "We provide end-to-end accounting services to businesses and individuals, ensuring financial accuracy, clarity, and transparency. From bookkeeping to financial reporting, our team helps you stay organized and make informed decisions with confidence.",
+    "benefit1":"Accurate bookkeeping and records management",
+    "benefit2":"Transparent and compliant accounting support"
+},
+"form":{
+  "title": "Get an Instant Estimate for Your Business Needs",
+  "description": "Use our smart calculator to get a personalized budget estimate in minutes. Share your details, and our consultants will reach out with tailored advice.",
+  "form_heading": "Budget Calculator",
+  "form_subtext": "Get your personalized estimate and connect with our experts",
+  "firstname": "First Name",
+  "firstname_placeholder": "First Name",
+  "email": "Email",
+  "email_placeholder": "example@mail.com",
+  "phone": "Phone No",
+  "phone_placeholder": "Enter your contact no",
+  "Company": "Company",
+  "Company_placeholder": "Enter your company name",
+  "service": "Service Type",
+  "service_placeholder": "Select Service Type",
+  "companysize": "Company Size", 
+  "companysize_placeholder": "Employees No",
+  "billing": "Estimated Billing",
+  "billing_placeholder": "Select Estimated Billing",
+  "timeline": "Preferred Timeline",
+  "timeline_placeholder": "Select Timeline",
+  "button": "Calculate My Budget"
+
+
+}
+
+
+
+},
+"outsource_page":{
+  "banner": {
+   "heading": {
+          "highlight": "Outsource Financial Department ",
+          "rest": "to Trusted Professionals"
+        },
+        "button": "Request your Quote"
+    },
+    "adminstration":{
+      "badge": "Administration Department",
+      "title": "Expert Tax Advisory Services",
+      "description": "We provide strategic tax advisory solutions to businesses and individuals, helping you stay compliant while optimizing your tax outcomes. ",
+      "subdescription": "Managing administration is more than paperwork — it’s about keeping your business efficient, compliant, and stress-free. Our experts handle documentation, reporting, and organizational processes with precision, ensuring smooth operations every day.",
+      "benefit1":"Streamlined reporting and record-keeping",
+      "benefit2":"Efficient handling of contracts and documentation"
+    },
+    "cfo":{
+      "badge": "Chief Financial Officer (CFO)",
+      "title": "Strategic Chief Financial Officer (CFO) Services for Smarter Decisions",
+      "description": "Our CFO services go beyond accounting. We provide insights, financial planning, and data-driven strategies that empower you to make informed business decisions. From budgeting to forecasting, we ensure your company is on track for sustainable success.",
+      "benefit1":"Cash flow management & forecasting",
+      "benefit2":"Tailored guidance for businesses of all sizes"
+    }
+},
+"contact": {
+        "badge": "Contact Us",
+        "title": "Let's Work Together",
+        "description":
+          "We’d love to hear from you! Reach out via the form below, WhatsApp, or email — our team will respond quickly.",
+        "address": "Avenida República Argentina, 26 Puerta E 41011 Sevilla",
+        "email": "Support@expertaliaasesores.es",
+        "phone": "955-190-908",
+        "whatsapp": "676 435 804",
+        "form": {
+          "firstname": "First Name",
+          "firstname_placeholder": "Enter your first name",
+          "lastName": "Last Name",
+          "lastname_placeholder": "Enter your last name",
+          "email": "Email",
+          "email_placeholder": "Enter your email",
+          "phone": "Phone",
+          "phone_placeholder": "Enter your phone number",
+          "wanttext": "What are you looking for?",
+          "howcanwehelp": "How can we help you?",
+          "button": "Submit",
+          "queries": {
+            "buySell": "Buy & Sell Companies",
+            "consulting": "Consulting",
+            "outsource": "Outsource Financial Department",
+            "other": "Other Queries"
+          }
+        }
+      }
 }

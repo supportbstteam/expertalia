@@ -39,6 +39,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
 }
 
 :root {
@@ -74,6 +75,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --menu-linkhover: oklch(43.00% 0.166 26.28);
+  --menu-default :oklch(29.58% 0.117 261.32);
+  --whatsapp-btn :oklch(78.34% 0.183 144.97)
 }
 
 .dark {
@@ -115,6 +119,52 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-[inter];
   }
 }
+
+@layer utilites {
+  .h1{
+    @apply text-[40px] font-semibold leading-15 text-[#052766]
+    }
+    .h2{
+      @apply text-[32px] font-semibold leading-15 text-[#052766]
+    }
+    .h3{
+      @apply text-2xl font-semibold leading-15 text-[#052766]
+    }
+  .container{
+    @apply max-w-[1320px] mx-auto px-4 md:px-0
+  }  
+  .subtext{
+    @apply text-[#6F6C8F] text-lg leading-5
+  }
+  /* Hide scrollbar for Chrome, Safari, Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 36;
+}
+.material-symbols-outlined.buysellicon {
+  font-size: 34px;
+  /* transform: scaleX(1.5); wider without increasing height */
+}
+.material-symbols-outlined.small_icon {
+  font-size: 16px;
+}
+
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";

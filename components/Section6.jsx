@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cookies } from "next/headers";
 import { getMessages } from "@/lib/getMessages";
-
+import { ArrowRight } from "lucide-react";
 export default function Section6() {
   const cookieStore = cookies();
   const lang = cookieStore.get("lang")?.value;
@@ -15,24 +15,34 @@ export default function Section6() {
     {
       title: t.s49,
       desc: t.s50,
-      image: "/section6_image2.png",
+      image: "/facuin.png",
+    },
+    {
+      title: t.sn51,
+      desc: t.sn52,
+      image: "/tech-card.png",
     },
     {
       title: t.s51,
       desc: t.s52,
-      image: "/section6_image3.png",
+      image: "/health-card.jpg",
+    },
+    {
+      title: t.sne51,
+      desc: t.sne52,
+      image: "/market-card.jpg",
     },
   ];
 
   return (
-    <section className="px-4 md:px-12 pt-16 pb-10 bg-white">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="container pt-16 pb-25 bg-white">
+      <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory py-4 px-2 no-scrollbar">
         {stories.map((story, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden transition hover:shadow-md relative"
+            className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden transition hover:shadow-md relative flex-shrink-0 w-90 snap-start"
           >
-            <div className="w-full h-[280px] relative">
+            <div className="w-full h-[180px] relative">
               <Image
                 src={story.image}
                 alt={story.title}
@@ -41,17 +51,20 @@ export default function Section6() {
               />
             </div>
 
-            <div className="p-6 text-left pb-16 mb-4">
+            <div className="p-6 text-left pb-8">
               <h3 className="text-lg font-semibold text-[#04295e] mb-2">
                 {story.title}
               </h3>
-              <p className="text-[#666c89]">{story.desc}</p>
+              <p className="text-[#666c89] min-h-[72px] line-clamp-3">{story.desc}</p>
             </div>
 
             {/* Button fixed to bottom-left of the card */}
-            <button className="px-4 py-2 text-sm text-[#04295e] font-medium border border-[#04295e] rounded-md hover:bg-gray-100 transition absolute bottom-6 left-6">
-              {t.s77}
-            </button>
+            <div className="px-6 pb-6">
+              <button className="group  bg-[#052766] text-white rounded-md px-4 py-3.5 flex items-center justify-center gap-2 hover:bg-white hover:text-[#052766] hover:border-[#052766] border border-transparent transition">
+                {t.s77}
+                <ArrowRight className="w-4 h-4 text-white group-hover:text-[#052766]" />
+              </button>
+            </div>
           </div>
         ))}
       </div>
